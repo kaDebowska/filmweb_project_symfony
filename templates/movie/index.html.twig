@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Movies
+{% endblock %}
+
+{% block body %}
+    <h1>Movies</h1>
+    {% if movies is defined and movies|length %}
+        {% for movie in movies %}
+            <dl>
+                <dt>{{ movie.title }}</dt>
+                <dd>
+                    {{ movie.year }}
+                    {{ movie.duration }} min
+                </dd>
+            </dl>
+        {% endfor %}
+
+    {% else %}
+    <p>Empty list</p>
+    {% endif %}
+{% endblock %}
+
