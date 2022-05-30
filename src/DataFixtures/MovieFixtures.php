@@ -6,8 +6,8 @@
 namespace App\DataFixtures;
 
 use App\Entity\Movie;
-use Doctrine\Persistence\ObjectManager;
 use DateTimeImmutable;
+use Doctrine\Persistence\ObjectManager;
 
 /**
  * Class MovieFixtures.
@@ -21,7 +21,7 @@ class MovieFixtures extends AbstractBaseFixtures
      */
     public function loadData(): void
     {
-        for ($i = 0; $i < 10; ++$i) {
+        for ($i = 0; $i < 100; ++$i) {
             $movie = new Movie();
             $movie->setTitle($this->faker->sentence);
             $movie->setCreatedAt(
@@ -31,9 +31,9 @@ class MovieFixtures extends AbstractBaseFixtures
                 DateTimeImmutable::createFromMutable($this->faker->dateTimeBetween('-100 days', '-1 days'))
             );
             $movie->setYear($this->faker->numberBetween(1900, 2022));
-            $movie->setDescription($this->faker->paragraph);
+            $movie->setDescription($this->faker->realText);
             $movie->setDirector($this->faker->name);
-            $movie->setDuration($this->faker->numberBetween(50, 180));
+            $movie->setDuration($this->faker->numberBetween(60, 180));
             $this->manager->persist($movie);
         }
         $this->manager->flush();

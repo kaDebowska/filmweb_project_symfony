@@ -33,7 +33,7 @@ class Movie
      *
      * @var string|null
      */
-    #[ORM\Column(type: 'string', length: 64)]
+    #[ORM\Column(type: 'string', length: 255)]
     private ?string $title = null;
 
     /**

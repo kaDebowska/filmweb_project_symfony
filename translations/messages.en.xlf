@@ -42,6 +42,10 @@
                 <source>label.year</source>
                 <target>Year</target>
             </trans-unit>
+            <trans-unit id="movie.details">
+                <source>movie.details</source>
+                <target>Movie details</target>
+            </trans-unit>
             <trans-unit id="label.tags">
                 <source>label.tags</source>
                 <target>Tags</target>
@@ -70,9 +74,9 @@
                 <source>action.view</source>
                 <target>Task view</target>
             </trans-unit>
-            <trans-unit id="title.task_details">
-                <source>title.task_details</source>
-                <target>Details of task #%id%</target>
+            <trans-unit id="title.movie_details">
+                <source>title.movie_details</source>
+                <target>Details of movie #%id%</target>
             </trans-unit>
             <trans-unit id="action.back_to_list">
                 <source>action.back_to_list</source>

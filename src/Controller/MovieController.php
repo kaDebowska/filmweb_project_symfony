@@ -7,7 +7,9 @@ namespace App\Controller;
 
 use App\Entity\Movie;
 use App\Repository\MovieRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -28,14 +30,25 @@ class MovieController extends AbstractController
         name: 'movie_index',
         methods: 'GET'
     )]
-    public function index(MovieRepository $movieRepository): Response
+    /**
+     * Index action.
+     *
+     * @param Request         $request        HTTP Request
+     * @param MovieRepository   $taskRepository Task repository
+     * @param PaginatorInterface $paginator      Paginator
+     *
+     * @return Response HTTP response
+     */
+    #[Route(name: 'movie_index', methods: 'GET')]
+    public function index(Request $request, MovieRepository $movieRepository, PaginatorInterface $paginator): Response
     {
-        $movies = $movieRepository->findAll();
-
-        return $this->render(
-            'movie/index.html.twig',
-            ['movies' => $movies]
+        $pagination = $paginator->paginate(
+            $movieRepository->queryAll(),
+            $request->query->getInt('page', 1),
+            MovieRepository::PAGINATOR_ITEMS_PER_PAGE
         );
+
+        return $this->render('movie/index.html.twig', ['pagination' => $pagination]);
     }
 
     /**

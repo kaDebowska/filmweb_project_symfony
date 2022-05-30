@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ movie.title }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ movie.title }}</h1>
+    {% if movie is defined and movie|length %}
+        <dl class="dl-horizontal">
+            <dt>{{ 'label.year'|trans }}</dt>
+            <dd>{{ movie.year }}</dd>
+            <dt>{{ 'label.duration'|trans }}</dt>
+            <dd>{{ movie.duration }}</dd>
+            <dt>{{ 'label.director'|trans }}</dt>
+            <dd>{{ movie.director }}</dd>
+            <dt>{{ 'label.description'|trans }}</dt>
+            <dd>{{ movie.description }}</dd>
+            <dt>{{ 'label.created_at'|trans }}</dt>
+            <dd>{{ movie.createdAt|format_date('long')}}</dd>
+            <dt>{{ 'label.updated_at'|trans }}</dt>
+            <dd>{{ movie.updatedAt|format_date('long') }}</dd>
+        </dl>
+        <p>
+            <a href="{{ url('movie_index') }}" title="{{ 'action.back_to_list'|trans }}">
+                {{ 'action.back_to_list'|trans }}
+            </a>
+        </p>
+    {% else %}
+        <p>
+            {{ 'message.record_not_found'|trans }}
+        </p>
+    {% endif %}
+{% endblock %}

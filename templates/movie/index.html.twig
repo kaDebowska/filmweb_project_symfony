@@ -6,17 +6,22 @@ Movies
 
 {% block body %}
     <h1>Movies</h1>
-    {% if movies is defined and movies|length %}
-        {% for movie in movies %}
+    {% if pagination is defined and pagination.items|length %}
+        {% for movie in pagination.items %}
             <dl>
-                <dt>{{ movie.title }}</dt>
+                <dt>
+                    <a href="{{ url('movie_show', {id: movie.id}) }}" title="{{ 'movie.details'|trans }}">
+                        {{ movie.title }} </a>
+                </dt>
                 <dd>
                     {{ movie.year }}
                     {{ movie.duration }} min
                 </dd>
             </dl>
         {% endfor %}
-
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
     {% else %}
     <p>Empty list</p>
     {% endif %}
