@@ -27,6 +27,7 @@ class MovieRepository extends ServiceEntityRepository
      * @constant int
      */
     public const PAGINATOR_ITEMS_PER_PAGE = 10;
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Movie::class);
@@ -35,11 +36,16 @@ class MovieRepository extends ServiceEntityRepository
     /**
      * Query all records.
      *
-     * @return QueryBuilder Query builder
+     * @return \Doctrine\ORM\QueryBuilder Query builder
      */
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
+            ->select(
+                'movie',
+                'partial category.{id, title}'
+            )
+            ->join('movie.category', 'category')
             ->orderBy('movie.updatedAt', 'DESC');
     }
 

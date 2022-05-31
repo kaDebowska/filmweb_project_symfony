@@ -4,6 +4,12 @@
 Movies
 {% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/movies.css') }}">
+
+{% endblock %}
+
 {% block body %}
     <h1>Movies</h1>
     {% if pagination is defined and pagination.items|length %}
@@ -14,8 +20,11 @@ Movies
                         {{ movie.title }} </a>
                 </dt>
                 <dd>
-                    {{ movie.year }}
-                    {{ movie.duration }} min
+                    <span class="badge bg-secondary">{{ movie.year }}</span>
+                    <span class="badge bg-secondary">{{ movie.duration }}m</span>
+                    {% for category in movie.category %}
+                        <span class="badge bg-secondary">{{ category.title }}</span>
+                    {% endfor%}
                 </dd>
             </dl>
         {% endfor %}

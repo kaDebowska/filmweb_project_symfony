@@ -7,7 +7,10 @@ namespace App\Entity;
 
 use App\Repository\MovieRepository;
 use DateTimeImmutable;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Movie.
@@ -87,6 +90,28 @@ class Movie
      */
     #[ORM\Column(type: 'datetime_immutable')]
     private ?DateTimeImmutable $updatedAt;
+
+    /**
+     * Categories.
+     *
+     * @var array
+     *
+     * @ORM\ManyToMany(
+     *     targetEntity="App\Entity\Category",
+     *     inversedBy="movies",
+     *     fetch="EXTRA_LAZY",
+     * )
+     * @ORM\JoinTable(name="movies_categories")
+     *
+     * @Assert\Type(type="Doctrine\Common\Collections\Collection")
+     */
+    #[ORM\ManyToMany(targetEntity: Category::class)]
+    private $category;
+
+    public function __construct()
+    {
+        $this->category = new ArrayCollection();
+    }
 
     /**
      * Getter for Id.
@@ -236,5 +261,29 @@ class Movie
     public function setUpdatedAt(?DateTimeImmutable $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * @return Collection<int, Category>
+     */
+    public function getCategory(): Collection
+    {
+        return $this->category;
+    }
+
+    public function addCategory(Category $category): self
+    {
+        if (!$this->category->contains($category)) {
+            $this->category[] = $category;
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): self
+    {
+        $this->category->removeElement($category);
+
+        return $this;
     }
 }

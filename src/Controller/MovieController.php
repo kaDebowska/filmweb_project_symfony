@@ -33,9 +33,9 @@ class MovieController extends AbstractController
     /**
      * Index action.
      *
-     * @param Request         $request        HTTP Request
-     * @param MovieRepository   $taskRepository Task repository
-     * @param PaginatorInterface $paginator      Paginator
+     * @param Request            $request         HTTP Request
+     * @param MovieRepository    $movieRepository Movie repository
+     * @param PaginatorInterface $paginator       Paginator
      *
      * @return Response HTTP response
      */
@@ -48,7 +48,9 @@ class MovieController extends AbstractController
             MovieRepository::PAGINATOR_ITEMS_PER_PAGE
         );
 
-        return $this->render('movie/index.html.twig', ['pagination' => $pagination]);
+        return $this->render('movie/index.html.twig', [
+           'pagination' => $pagination
+        ]);
     }
 
     /**

@@ -5,23 +5,30 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Category;
 use App\Entity\Movie;
 use DateTimeImmutable;
-use Doctrine\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 /**
  * Class MovieFixtures.
  */
-class MovieFixtures extends AbstractBaseFixtures
+class MovieFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
     /**
      * Load data.
      *
-     * @param ObjectManager $manager Persistence object manager
+     * @psalm-suppress PossiblyNullPropertyFetch
+     * @psalm-suppress PossiblyNullReference
+     * @psalm-suppress UnusedClosureParam
      */
     public function loadData(): void
     {
-        for ($i = 0; $i < 100; ++$i) {
+        if (null === $this->manager || null === $this->faker) {
+            return;
+        }
+
+        $this->createMany(100, 'movies', function (int $i) {
             $movie = new Movie();
             $movie->setTitle($this->faker->sentence);
             $movie->setCreatedAt(
@@ -34,8 +41,28 @@ class MovieFixtures extends AbstractBaseFixtures
             $movie->setDescription($this->faker->realText);
             $movie->setDirector($this->faker->name);
             $movie->setDuration($this->faker->numberBetween(60, 180));
-            $this->manager->persist($movie);
-        }
+
+            /** @var Category $categories */
+            $categories = $this->getRandomReferences('categories', $this->faker->numberBetween(1, 3));
+            foreach ($categories as $category) {
+                $movie->addCategory($category);
+            }
+
+            return $movie;
+        });
         $this->manager->flush();
+    }
+
+    /**
+     * This method must return an array of fixtures classes
+     * on which the implementing class depends on.
+     *
+     * @return string[] of dependencies
+     *
+     * @psalm-return array{0: CategoryFixtures::class}
+     */
+    public function getDependencies(): array
+    {
+        return [CategoryFixtures::class];
     }
 }

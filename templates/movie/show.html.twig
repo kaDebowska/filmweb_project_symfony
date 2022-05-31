@@ -11,7 +11,11 @@
             <dt>{{ 'label.year'|trans }}</dt>
             <dd>{{ movie.year }}</dd>
             <dt>{{ 'label.duration'|trans }}</dt>
-            <dd>{{ movie.duration }}</dd>
+            <dd>{{ movie.duration }}m</dd>
+            <dt>{{ 'label.category'|trans }}</dt>
+            {% for category in movie.category %}
+                <dd>{{ category.title }}m</dd>
+            {% endfor %}
             <dt>{{ 'label.director'|trans }}</dt>
             <dd>{{ movie.director }}</dd>
             <dt>{{ 'label.description'|trans }}</dt>
