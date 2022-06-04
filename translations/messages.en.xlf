@@ -62,6 +62,10 @@
                 <source>message.record_not_found</source>
                 <target>Record not found.</target>
             </trans-unit>
+            <trans-unit id="message.created_successfully">
+                <source>message.created_successfully</source>
+                <target>New record added</target>
+            </trans-unit>
             <trans-unit id="title.record_list">
                 <source>title.record_list</source>
                 <target>Records list</target>
@@ -74,9 +78,29 @@
                 <source>title.task_list</source>
                 <target>Tasks list</target>
             </trans-unit>
+            <trans-unit id="title.category_list">
+                <source>title.category_list</source>
+                <target>Category list</target>
+            </trans-unit>
+            <trans-unit id="title.category_details">
+                <source>title.category_details</source>
+                <target>Category details</target>
+            </trans-unit>
+            <trans-unit id="title.category_create">
+                <source>title.category_create</source>
+                <target>Create category</target>
+            </trans-unit>
             <trans-unit id="action.view">
                 <source>action.view</source>
-                <target>Task view</target>
+                <target>view details</target>
+            </trans-unit>
+            <trans-unit id="action.create">
+                <source>action.create</source>
+                <target>Create new</target>
+            </trans-unit>
+            <trans-unit id="action.save">
+                <source>action.save</source>
+                <target>Save</target>
             </trans-unit>
             <trans-unit id="title.movie_details">
                 <source>title.movie_details</source>
