@@ -64,7 +64,7 @@
             </trans-unit>
             <trans-unit id="message.created_successfully">
                 <source>message.created_successfully</source>
-                <target>New record added</target>
+                <target>Changes saved</target>
             </trans-unit>
             <trans-unit id="title.record_list">
                 <source>title.record_list</source>
@@ -90,6 +90,10 @@
                 <source>title.category_create</source>
                 <target>Create category</target>
             </trans-unit>
+            <trans-unit id="title.category_edit">
+                <source>title.category_edit</source>
+                <target>Edit category</target>
+            </trans-unit>
             <trans-unit id="action.view">
                 <source>action.view</source>
                 <target>view details</target>
@@ -97,6 +101,10 @@
             <trans-unit id="action.create">
                 <source>action.create</source>
                 <target>Create new</target>
+            </trans-unit>
+            <trans-unit id="action.edit">
+                <source>action.edit</source>
+                <target>Edit</target>
             </trans-unit>
             <trans-unit id="action.save">
                 <source>action.save</source>
