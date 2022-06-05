@@ -32,7 +32,9 @@ Movies
             {{ knp_pagination_render(pagination) }}
         </div>
     {% else %}
-    <p>Empty list</p>
+        <div class="alert alert-warning" role="alert">
+            {{ 'message.empty_list'|trans }}
+        </div>
     {% endif %}
 {% endblock %}
 

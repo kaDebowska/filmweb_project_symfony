@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ movie.title }}
+    {{ 'title_movie_details'|trans({'%id%': movie.id|default('')}) }}
 {% endblock %}
 
 {% block body %}
@@ -31,7 +31,7 @@
             </a>
         </p>
     {% else %}
-        <p>
+        <p class="alert alert-warning" role="alert">
             {{ 'message.record_not_found'|trans }}
         </p>
     {% endif %}

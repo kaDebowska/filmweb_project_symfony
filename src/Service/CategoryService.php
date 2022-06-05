@@ -54,6 +54,16 @@ class CategoryService implements CategoryServiceInterface
     }
 
     /**
+     * Delete entity.
+     *
+     * @param Category $category Category entity
+     */
+    public function delete(Category $category): void
+    {
+        $this->categoryRepository->delete($category);
+    }
+
+    /**
      * Get paginated list.
      *
      * @param int $page Page number
