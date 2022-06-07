@@ -114,18 +114,11 @@ class Movie
     /**
      * Categories.
      *
-     * @var array
-     *
-     * @ORM\ManyToMany(
-     *     targetEntity="App\Entity\Category",
-     *     inversedBy="movies",
-     *     fetch="EXTRA_LAZY",
-     * )
-     * @ORM\JoinTable(name="movies_categories")
-     *
-     * @Assert\Type(type="Doctrine\Common\Collections\Collection")
+     * @var ArrayCollection<int, Category>
      */
-    #[ORM\ManyToMany(targetEntity: Category::class)]
+    #[Assert\Valid]
+    #[ORM\ManyToMany(targetEntity: Category::class, fetch: 'EXTRA_LAZY', orphanRemoval: true)]
+    #[ORM\JoinTable(name: 'movies_categories')]
     private $category;
 
     /**

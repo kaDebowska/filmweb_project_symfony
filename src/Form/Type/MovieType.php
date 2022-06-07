@@ -7,7 +7,7 @@ namespace App\Form\Type;
 
 use App\Entity\Category;
 use App\Entity\Movie;
-use Doctrine\DBAL\Types\IntegerType;
+use App\Form\DataTransformer\CategoriesDataTransformer;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -20,6 +20,22 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class MovieType extends AbstractType
 {
+    /**
+     * Categories data transformer.
+     *
+     * @var CategoriesDataTransformer
+     */
+    private CategoriesDataTransformer $categoriesDataTransformer;
+
+    /**
+     * Constructor.
+     *
+     * @param CategoriesDataTransformer $categoriesDataTransformer Categories data transformer
+     */
+    public function __construct(CategoriesDataTransformer $categoriesDataTransformer)
+    {
+        $this->categoriesDataTransformer = $categoriesDataTransformer;
+    }
     /**
      * Builds the form.
      *
@@ -79,18 +95,14 @@ class MovieType extends AbstractType
         );
         $builder->add(
             'category',
-            EntityType::class,
+            TextType::class,
             [
-                'class' => Category::class,
-                'choice_label' => function ($category): string {
-                    return $category->getTitle();
-                },
                 'label' => 'label.category',
-                'placeholder' => 'label.none',
                 'required' => true,
-                'expanded' => true,
-                'multiple' => true,
             ]
+        );
+        $builder->get('category')->addModelTransformer(
+            $this->categoriesDataTransformer
         );
     }
 

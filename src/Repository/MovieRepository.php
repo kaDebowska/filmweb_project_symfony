@@ -68,8 +68,7 @@ class MovieRepository extends ServiceEntityRepository
         $qb = $this->getOrCreateQueryBuilder();
 
         return $qb->select($qb->expr()->countDistinct('movie.id'))
-            ->join('movies_categories', 'category')
-            ->where('movie.id = :category.movie_id')
+            ->where('movie.category = :category')
             ->setParameter(':category', $category)
             ->getQuery()
             ->getSingleScalarResult();

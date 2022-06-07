@@ -85,6 +85,18 @@ class CategoryService implements CategoryServiceInterface
     }
 
     /**
+     * Find by title.
+     *
+     * @param string $title Category title
+     *
+     * @return Category|null Category entity
+     */
+    public function findOneByTitle(string $title): ?Category
+    {
+        return $this->categoryRepository->findOneByTitle($title);
+    }
+
+    /**
      * Get paginated list.
      *
      * @param int $page Page number
