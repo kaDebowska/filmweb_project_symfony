@@ -5,6 +5,7 @@
 
 namespace App\Service;
 
+use App\Entity\Movie;
 use App\Repository\MovieRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -27,8 +28,8 @@ class MovieService implements MovieServiceInterface
     /**
      * Constructor.
      *
-     * @param MovieRepository     $movieRepository Movie repository
-     * @param PaginatorInterface $paginator      Paginator
+     * @param MovieRepository    $movieRepository Movie repository
+     * @param PaginatorInterface $paginator       Paginator
      */
     public function __construct(MovieRepository $movieRepository, PaginatorInterface $paginator)
     {
@@ -50,5 +51,25 @@ class MovieService implements MovieServiceInterface
             $page,
             MovieRepository::PAGINATOR_ITEMS_PER_PAGE
         );
+    }
+
+    /**
+     * Save entity.
+     *
+     * @param Movie $movie Task entity
+     */
+    public function save(Movie $movie): void
+    {
+        $this->movieRepository->save($movie);
+    }
+
+    /**
+     * Delete entity.
+     *
+     * @param Movie $movie Task entity
+     */
+    public function delete(Movie $movie): void
+    {
+        $this->movieRepository->delete($movie);
     }
 }

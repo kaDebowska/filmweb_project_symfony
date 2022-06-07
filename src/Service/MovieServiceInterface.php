@@ -22,4 +22,18 @@ interface MovieServiceInterface
      */
     public function getPaginatedList(int $page): PaginationInterface;
 
+
+    /**
+     * Save entity.
+     *
+     * @param Movie $movie Task entity
+     */
+    public function save(Movie $movie): void;
+
+    /**
+     * Delete entity.
+     *
+     * @param Movie $movie Task entity
+     */
+    public function delete(Movie $movie): void;
 }

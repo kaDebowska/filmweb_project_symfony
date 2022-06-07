@@ -15,7 +15,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-
 /**
  * Class CategoryController.
  */
@@ -29,11 +28,8 @@ class CategoryController extends AbstractController
 
     /**
      * Translator.
-     *
-     * @var TranslatorInterface
      */
     private TranslatorInterface $translator;
-
 
     /**
      * Constructor.
@@ -165,6 +161,15 @@ class CategoryController extends AbstractController
     #[Route('/{id}/delete', name: 'category_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Category $category): Response
     {
+        if (!$this->categoryService->canBeDeleted($category)) {
+            $this->addFlash(
+                'warning',
+                $this->translator->trans('message.category_contains_movies')
+            );
+
+            return $this->redirectToRoute('category_index');
+        }
+
         $form = $this->createForm(FormType::class, $category, [
             'method' => 'DELETE',
             'action' => $this->generateUrl('category_delete', ['id' => $category->getId()]),

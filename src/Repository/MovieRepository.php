@@ -2,8 +2,11 @@
 
 namespace App\Repository;
 
+use App\Entity\Category;
 use App\Entity\Movie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -47,6 +50,51 @@ class MovieRepository extends ServiceEntityRepository
             )
             ->join('movie.category', 'category')
             ->orderBy('movie.updatedAt', 'DESC');
+    }
+
+
+    /**
+     * Count movies by category.
+     *
+     * @param Category $category Category
+     *
+     * @return int Number of movies in category
+     *
+     * @throws NoResultException
+     * @throws NonUniqueResultException
+     */
+    public function countByCategory(Category $category): int
+    {
+        $qb = $this->getOrCreateQueryBuilder();
+
+        return $qb->select($qb->expr()->countDistinct('movie.id'))
+            ->join('movies_categories', 'category')
+            ->where('movie.id = :category.movie_id')
+            ->setParameter(':category', $category)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    /**
+     * Save entity.
+     *
+     * @param Movie $movie Movie entity
+     */
+    public function save(Movie $movie): void
+    {
+        $this->_em->persist($movie);
+        $this->_em->flush();
+    }
+
+    /**
+     * Delete entity.
+     *
+     * @param Movie $movie Movie entity
+     */
+    public function delete(Movie $movie): void
+    {
+        $this->_em->remove($movie);
+        $this->_em->flush();
     }
 
     /**

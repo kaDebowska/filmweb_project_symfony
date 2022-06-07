@@ -74,6 +74,10 @@
                 <source>message.deleted_successfully</source>
                 <target>Deleted successfully</target>
             </trans-unit>
+            <trans-unit id="message.category_contains_movies">
+                <source>message.category_contains_movies</source>
+                <target>Category contains movies</target>
+            </trans-unit>
             <trans-unit id="title.record_list">
                 <source>title.record_list</source>
                 <target>Records list</target>
@@ -102,9 +106,21 @@
                 <source>title.category_create</source>
                 <target>Create category</target>
             </trans-unit>
+            <trans-unit id="title.movie_create">
+                <source>title.movie_create</source>
+                <target>Create movie</target>
+            </trans-unit>
+            <trans-unit id="title.movie_delete">
+                <source>title.movie_delete</source>
+                <target>Delete movie</target>
+            </trans-unit>
             <trans-unit id="title.category_edit">
                 <source>title.category_edit</source>
                 <target>Edit category #%id%</target>
+            </trans-unit>
+            <trans-unit id="title.movie_edit">
+                <source>title.movie_edit</source>
+                <target>Edit movie #%id%</target>
             </trans-unit>
             <trans-unit id="title.category_delete">
                 <source>title.category_delete</source>
@@ -129,6 +145,10 @@
             <trans-unit id="action.save">
                 <source>action.save</source>
                 <target>Save</target>
+            </trans-unit>
+            <trans-unit id="action.see_categories">
+                <source>action.see_categories</source>
+                <target>See categories</target>
             </trans-unit>
             <trans-unit id="title.movie_details">
                 <source>title.movie_details</source>

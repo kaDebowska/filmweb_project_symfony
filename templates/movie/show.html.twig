@@ -25,11 +25,17 @@
             <dt>{{ 'label.updated_at'|trans }}</dt>
             <dd>{{ movie.updatedAt|format_date('long') }}</dd>
         </dl>
-        <p>
-            <a href="{{ url('movie_index') }}" title="{{ 'action.back_to_list'|trans }}">
+        <div class="d-flex justify-content-around">
+            <a href="{{ url('movie_delete', {id: movie.id}) }}" title="{{ 'action.delete'|trans }}" class="btn btn-danger btn-lg">
+                {{ 'action.delete'|trans }}
+            </a>
+            <a href="{{ url('movie_edit', {id: movie.id}) }}" title="{{ 'action.edit'|trans }}" class="btn btn-warning btn-lg">
+                {{ 'action.edit'|trans }}
+            </a>
+            <a href="{{ url('movie_index') }}" title="{{ 'action.back_to_list'|trans }}" class="btn btn-primary btn-lg">
                 {{ 'action.back_to_list'|trans }}
             </a>
-        </p>
+        </div>
     {% else %}
         <p class="alert alert-warning" role="alert">
             {{ 'message.record_not_found'|trans }}

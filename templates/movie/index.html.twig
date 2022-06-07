@@ -11,7 +11,12 @@ Movies
 {% endblock %}
 
 {% block body %}
-    <h1>Movies</h1>
+    <div class="d-flex justify-content-between my-3">
+            <h1>Movies</h1>
+        <a href="{{ url('category_index') }}" class="btn btn-primary btn-lg">
+            {{ 'action.see_categories'|trans }}
+        </a>
+    </div>
     {% if pagination is defined and pagination.items|length %}
         {% for movie in pagination.items %}
             <dl>
@@ -28,6 +33,11 @@ Movies
                 </dd>
             </dl>
         {% endfor %}
+        <p>
+            <a href="{{ url('movie_create') }}" title="{{ 'action.create'|trans }}" class="btn btn-primary btn-lg">
+                {{ 'action.create'|trans }}
+            </a>
+        </p>
         <div class="navigation text-center">
             {{ knp_pagination_render(pagination) }}
         </div>

@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title.category_create'|trans }}
+    {{ 'title.movie_create'|trans }}
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.category_create'|trans }}</h1>
+    <h1>{{ 'title.movie_create'|trans }}</h1>
     {{ form_start(form) }}
     {{ form_widget(form) }}
     <div class="form-group row col-4 mx-auto float-sm-right">
         <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-primary btn-lg"/>
     </div>
     <div class="form-group row float-sm-left">
-        <a href="{{ url('category_index') }}" class="btn btn-link">
+        <a href="{{ url('movie_index') }}" class="btn btn-link">
             {{ 'action.back_to_list'|trans }}
         </a>
     </div>

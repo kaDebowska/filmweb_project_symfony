@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title.category_delete'|trans({'%id%': category.id|default('')}) }}
+    {{ 'title.movie_delete'|trans({'%id%': movie.id|default('')}) }}
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.category_delete'|trans({'%id%': category.id|default('')}) }}</h1>
+    <h1>{{ 'title.movie_delete'|trans({'%id%': movie.id|default('')}) }}</h1>
     {{ form_start(form) }}
     {{ form_widget(form) }}
     <div class="form-group float-sm-right">
-        <input type="submit" value="{{ 'action.delete'|trans }}" class="btn btn-primary btn-lg">
+        <input type="submit" value="{{ 'action.delete'|trans }}" class="btn btn-danger btn-lg">
     </div>
     <div class="form-group float-sm-left">
-        <a href="{{ url('category_index') }}" class="btn btn-link btn-lg">
+        <a href="{{ url('movie_index') }}" class="btn btn-link btn-lg">
             {{ 'action.back_to_list'|trans }}
         </a>
     </div>

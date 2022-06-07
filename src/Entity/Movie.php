@@ -10,7 +10,9 @@ use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Class Movie.
@@ -31,21 +33,29 @@ class Movie
     #[ORM\Column(type: 'integer')]
     private ?int $id = null;
 
+
     /**
      * Title.
      *
      * @var string|null
      */
     #[ORM\Column(type: 'string', length: 255)]
-    private ?string $title = null;
+    #[Assert\Type('string')]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3, max: 255)]
+    private ?string $title;
 
     /**
      * Year.
      *
-     * @var string|null
+     * @var integer|null
      */
-    #[ORM\Column(type: 'string', length: 4)]
-    private ?string $year = null;
+    #[ORM\Column(type: 'integer')]
+    #[Assert\Type('integer')]
+    #[Assert\NotBlank]
+    #[Assert\LessThan(2022)]
+    #[Assert\GreaterThan(1900)]
+    private ?int $year = null;
 
     /**
      * Director.
@@ -53,6 +63,9 @@ class Movie
      * @var string|null
      */
     #[ORM\Column(type: 'string', length: 45)]
+    #[Assert\Type('string')]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3, max: 45)]
     private ?string $director = null;
 
     /**
@@ -61,6 +74,10 @@ class Movie
      * @var int|null
      */
     #[ORM\Column(type: 'integer')]
+    #[Assert\Type('integer')]
+    #[Assert\NotBlank]
+    #[Assert\GreaterThan(50)]
+    #[Assert\LessThan(180)]
     private ?int $duration = null;
 
     /**
@@ -69,26 +86,29 @@ class Movie
      * @var string|null
      */
     #[ORM\Column(type: 'text')]
+    #[Assert\Type('string')]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 45, max: 2000)]
     private ?string $description = null;
 
     /**
      * Created at.
      *
      * @var DateTimeImmutable|null
-     *
-     * @psalm-suppress PropertyNotSetInConstructor
      */
     #[ORM\Column(type: 'datetime_immutable')]
+    #[Assert\Type(DateTimeImmutable::class)]
+    #[Gedmo\Timestampable(on: 'create')]
     private ?DateTimeImmutable $createdAt;
 
     /**
      * Updated at.
      *
      * @var DateTimeImmutable|null
-     *
-     * @psalm-suppress PropertyNotSetInConstructor
      */
     #[ORM\Column(type: 'datetime_immutable')]
+    #[Assert\Type(DateTimeImmutable::class)]
+    #[Gedmo\Timestampable(on: 'update')]
     private ?DateTimeImmutable $updatedAt;
 
     /**
@@ -108,6 +128,9 @@ class Movie
     #[ORM\ManyToMany(targetEntity: Category::class)]
     private $category;
 
+    /**
+     * Constructor.
+     */
     public function __construct()
     {
         $this->category = new ArrayCollection();
