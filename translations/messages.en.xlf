@@ -78,6 +78,10 @@
                 <source>message.category_contains_movies</source>
                 <target>Category contains movies</target>
             </trans-unit>
+            <trans-unit id="message.access_denied">
+                <source>message.access_denied</source>
+                <target>Access denied!</target>
+            </trans-unit>
             <trans-unit id="title.record_list">
                 <source>title.record_list</source>
                 <target>Records list</target>

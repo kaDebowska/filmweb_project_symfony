@@ -8,6 +8,7 @@ namespace App\Controller;
 use App\Entity\Movie;
 use App\Form\Type\MovieType;
 use App\Service\MovieServiceInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
@@ -93,6 +94,14 @@ class MovieController extends AbstractController
     #[Route('/create', name: 'movie_create', methods: 'GET|POST', )]
     public function create(Request $request): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.access_denied')
+            );
+
+            return $this->redirectToRoute('movie_index');
+        }
         $movie = new Movie();
         $form = $this->createForm(MovieType::class, $movie, ['action' => $this->generateUrl('movie_create')]);
         $form->handleRequest($request);
@@ -124,6 +133,14 @@ class MovieController extends AbstractController
     #[Route('/{id}/edit', name: 'movie_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function edit(Request $request, Movie $movie): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.access_denied')
+            );
+
+            return $this->redirectToRoute('movie_index');
+        }
         $form = $this->createForm(MovieType::class, $movie, [
             'method' => 'PUT',
             'action' => $this->generateUrl('movie_edit', ['id' => $movie->getId()]),
@@ -158,6 +175,14 @@ class MovieController extends AbstractController
     #[Route('/{id}/delete', name: 'movie_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Movie $movie): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.access_denied')
+            );
+
+            return $this->redirectToRoute('movie_index');
+        }
         $form = $this->createForm(FormType::class, $movie, [
             'method' => 'DELETE',
             'action' => $this->generateUrl('movie_delete', ['id' => $movie->getId()]),
