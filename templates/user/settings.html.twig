@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.profile_settings'|trans}}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'title.profile_settings'|trans}}</h1>
+    <h2>Change password</h2>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %}

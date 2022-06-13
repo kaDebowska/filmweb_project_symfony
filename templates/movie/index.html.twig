@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-Movies
+    {{ 'title.movie_list' | trans }}
 {% endblock %}
 
 {% block stylesheets %}
@@ -19,11 +19,11 @@ Movies
                 <th>{{ knp_pagination_sortable(pagination, 'label.duration'|trans, 'movie.duration') }}</th>
             </tr>
         </table>
-        <h1>Movies</h1>
+        <h1>{{ 'title.movie_list' | trans }}</h1>
         {% for movie in pagination.items %}
             <dl>
                 <dt>
-                    <a href="{{ url('movie_show', {id: movie.id}) }}" title="{{ 'movie.details'|trans }}">
+                    <a href="{{ url('movie_show', {id: movie.id}) }}" title="{{ 'title.movie_details'|trans }}">
                         {{ movie.title }} </a>
                 </dt>
                 <dd>

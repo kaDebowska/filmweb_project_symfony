@@ -42,10 +42,6 @@
                 <source>label.year</source>
                 <target>Year</target>
             </trans-unit>
-            <trans-unit id="movie.details">
-                <source>movie.details</source>
-                <target>Movie details</target>
-            </trans-unit>
             <trans-unit id="label.tags">
                 <source>label.tags</source>
                 <target>Tags</target>
@@ -53,6 +49,34 @@
             <trans-unit id="label.category">
                 <source>label.category</source>
                 <target>Category</target>
+            </trans-unit>
+            <trans-unit id="navbar.profile">
+                <source>navbar.profile</source>
+                <target>Profile</target>
+            </trans-unit>
+            <trans-unit id="navbar.movies">
+                <source>navbar.movies</source>
+                <target>Movies</target>
+            </trans-unit>
+            <trans-unit id="navbar.categories">
+                <source>navbar.categories</source>
+                <target>Categories</target>
+            </trans-unit>
+            <trans-unit id="navbar.log_in">
+                <source>navbar.log_in</source>
+                <target>Log in</target>
+            </trans-unit>
+            <trans-unit id="navbar.log_out">
+                <source>navbar.log_out</source>
+                <target>Log out</target>
+            </trans-unit>
+            <trans-unit id="navbar.sign_up">
+                <source>navbar.sign_up</source>
+                <target>Sign up</target>
+            </trans-unit>
+            <trans-unit id="navbar.settingd">
+                <source>navbar.settings</source>
+                <target>Settings</target>
             </trans-unit>
             <trans-unit id="message.empty_list">
                 <source>message.empty_list</source>
@@ -91,16 +115,16 @@
                 <target>Record view #%id%</target>
             </trans-unit>
             <trans-unit id="title.movie_list">
-                <source>title.task_list</source>
+                <source>title.movie_list</source>
                 <target>Movies list</target>
             </trans-unit>
             <trans-unit id="title.category_list">
                 <source>title.category_list</source>
                 <target>Category list</target>
             </trans-unit>
-            <trans-unit id="title_movie_details">
-                <source>title_movie_details</source>
-                <target>Movie details #%id%</target>
+            <trans-unit id="title.movie_details">
+                <source>title.movie_details</source>
+                <target>Details of movie #%id%</target>
             </trans-unit>
             <trans-unit id="title.category_details">
                 <source>title.category_details</source>
@@ -130,6 +154,10 @@
                 <source>title.category_delete</source>
                 <target>Delete category #%id%</target>
             </trans-unit>
+            <trans-unit id="title.profile_settings">
+                <source>title.profile_settings</source>
+                <target>Profile settings</target>
+            </trans-unit>
             <trans-unit id="action.view">
                 <source>action.view</source>
                 <target>view details</target>
@@ -153,10 +181,6 @@
             <trans-unit id="action.see_categories">
                 <source>action.see_categories</source>
                 <target>See categories</target>
-            </trans-unit>
-            <trans-unit id="title.movie_details">
-                <source>title.movie_details</source>
-                <target>Details of movie #%id%</target>
             </trans-unit>
             <trans-unit id="action.back_to_list">
                 <source>action.back_to_list</source>
