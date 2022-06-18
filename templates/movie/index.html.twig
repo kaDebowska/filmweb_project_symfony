@@ -29,9 +29,15 @@
                 <dd>
                     <span class="badge bg-secondary">{{ movie.year }}</span>
                     <span class="badge bg-secondary">{{ movie.duration }}m</span>
-                    {% for category in movie.category %}
-                        <span class="badge bg-secondary">{{ category.title }}</span>
-                    {% endfor%}
+                    {% if movie.category is defined and movie.category|length %}
+                        {% for category in movie.category %}
+                            <span class="badge bg-secondary"><a href="{{ url('movie_index', {'filters.category_id' : category.id}) }}" title="{{ category.title }}">
+                                {{ category.title }}</a>
+                            </span>
+                        {% endfor%}
+                    {% else %}
+                        &nbsp;
+                    {% endif %}
                 </dd>
             </dl>
         {% endfor %}

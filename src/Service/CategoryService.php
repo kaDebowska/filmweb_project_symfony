@@ -97,6 +97,20 @@ class CategoryService implements CategoryServiceInterface
     }
 
     /**
+     * Find by id.
+     *
+     * @param int $id Category id
+     *
+     * @return Category|null Category entity
+     *
+     * @throws NonUniqueResultException
+     */
+    public function findOneById(int $id): ?Category
+    {
+        return $this->categoryRepository->findOneById($id);
+    }
+
+    /**
      * Get paginated list.
      *
      * @param int $page Page number
