@@ -61,7 +61,7 @@ class UserController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/settings', name: 'user_settings', methods: 'GET|PUT')]
+    #[Route('/{id}/settings', name: 'user_settings', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function changePassword(Request $request, User $user): Response
     {
         if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
@@ -70,12 +70,13 @@ class UserController extends AbstractController
                 $this->translator->trans('message.access_denied')
             );
 
-            return $this->redirectToRoute('movie_index');
+            return $this->redirectToRoute('app_login');
         }
-        //$user = $this->getUser();
+        $use = $this->getUser();
+
         $form = $this->createForm(UserType::class, $user, [
             'method' => 'PUT',
-            'action' => $this->generateUrl('user_settings'),
+            'action' => $this->generateUrl('user_settings', ['id' => $user->getId()]),
         ]);
         $form->handleRequest($request);
 

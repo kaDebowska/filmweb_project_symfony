@@ -98,7 +98,7 @@ class CategoryController extends AbstractController
                 $this->translator->trans('message.access_denied')
             );
 
-            return $this->redirectToRoute('category_index');
+            return $this->redirectToRoute('app_login');
         }
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
@@ -138,7 +138,7 @@ class CategoryController extends AbstractController
                 $this->translator->trans('message.access_denied')
             );
 
-            return $this->redirectToRoute('category_index');
+            return $this->redirectToRoute('app_login');
         }
         $form = $this->createForm(CategoryType::class, $category, [
             'method' => 'PUT',
@@ -183,7 +183,7 @@ class CategoryController extends AbstractController
                 $this->translator->trans('message.access_denied')
             );
 
-            return $this->redirectToRoute('category_index');
+            return $this->redirectToRoute('app_login');
         }
         if (!$this->categoryService->canBeDeleted($category)) {
             $this->addFlash(

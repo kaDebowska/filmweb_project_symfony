@@ -23,7 +23,7 @@
         {% for movie in pagination.items %}
             <dl>
                 <dt>
-                    <a href="{{ url('movie_show', {id: movie.id}) }}" title="{{ 'title.movie_details'|trans }}">
+                    <a href="{{ url('movie_show', {id: movie.id}) }}" title="{{ 'title.movie_details'|trans({'%id%': movie.id|default('')})  }}">
                         {{ movie.title }} </a>
                 </dt>
                 <dd>

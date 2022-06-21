@@ -37,6 +37,9 @@
                 <li class="nav-item">
                     <a class="nav-link active fs-4 fw-bold ms-5" href="{{ url('category_index') }}">Categories</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link active fs-4 fw-bold ms-5" href="{{ url('comment_index') }}">Comments</a>
+                </li>
             </ul>
             {% if is_granted('ROLE_USER') %}
                 <div class="dropdown">
@@ -44,7 +47,7 @@
                             {{ 'navbar.profile' | trans }}</a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="user-dropdown">
                 <li><a class="dropdown-item" href="{{ path('app_logout') }}">{{ 'navbar.log_out' | trans }}</a></li>
-                <li><a class="dropdown-item" href="{{ url('user_settings') }}">{{ 'navbar.settings' | trans }}</a></li>
+{#                <li><a class="dropdown-item" href="{{ url('user_settings', {id: user.id}) }}">{{ 'navbar.settings' | trans }}</a></li>#}
             </ul>
             </div>
             {% else %}

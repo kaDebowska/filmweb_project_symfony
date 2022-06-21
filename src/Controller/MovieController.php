@@ -6,16 +6,16 @@
 namespace App\Controller;
 
 use App\Entity\Movie;
-use App\Entity\User;
 use App\Form\Type\MovieType;
 use App\Service\MovieServiceInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Doctrine\ORM\NonUniqueResultException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
+
 
 /**
  * Class MovieController.
@@ -51,6 +51,7 @@ class MovieController extends AbstractController
      * @param Request $request HTTP Request
      *
      * @return Response HTTP response
+     * @throws NonUniqueResultException
      */
     #[Route(name: 'movie_index', methods: 'GET')]
     public function index(Request $request): Response
@@ -119,7 +120,7 @@ class MovieController extends AbstractController
                 $this->translator->trans('message.access_denied')
             );
 
-            return $this->redirectToRoute('movie_index');
+            return $this->redirectToRoute('app_login');
         }
         $movie = new Movie();
         $form = $this->createForm(MovieType::class, $movie, ['action' => $this->generateUrl('movie_create')]);
@@ -158,7 +159,7 @@ class MovieController extends AbstractController
                 $this->translator->trans('message.access_denied')
             );
 
-            return $this->redirectToRoute('movie_index');
+            return $this->redirectToRoute('app_login');
         }
         $form = $this->createForm(MovieType::class, $movie, [
             'method' => 'PUT',
@@ -174,7 +175,7 @@ class MovieController extends AbstractController
                 $this->translator->trans('message.edited_successfully')
             );
 
-            return $this->redirectToRoute('movie_index');
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('movie/edit.html.twig', [
@@ -200,7 +201,7 @@ class MovieController extends AbstractController
                 $this->translator->trans('message.access_denied')
             );
 
-            return $this->redirectToRoute('movie_index');
+            return $this->redirectToRoute('app_login');
         }
         $form = $this->createForm(FormType::class, $movie, [
             'method' => 'DELETE',

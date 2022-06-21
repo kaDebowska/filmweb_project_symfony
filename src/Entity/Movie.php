@@ -152,7 +152,7 @@ class Movie
     /**
      * Setter for title.
      *
-     * @param string|null $title Title
+     * @param string $title Title
      */
     public function setTitle(string $title): void
     {
@@ -172,7 +172,7 @@ class Movie
     /**
      * Setter for Year.
      *
-     * @param string|null $year Year
+     * @param string $year Year
      */
     public function setYear(string $year): void
     {
@@ -192,7 +192,7 @@ class Movie
     /**
      * Setter for director.
      *
-     * @param string|null $director Director
+     * @param string $director Director
      */
     public function setDirector(string $director): void
     {
@@ -212,7 +212,7 @@ class Movie
     /**
      * Setter for duration.
      *
-     * @param int|null $duration Duration
+     * @param int $duration Duration
      */
     public function setDuration(int $duration): void
     {
@@ -232,7 +232,7 @@ class Movie
     /**
      * Setter for description.
      *
-     * @param string|null $description DEscription
+     * @param string $description Description
      */
     public function setDescription(string $description): void
     {
@@ -287,19 +287,24 @@ class Movie
         return $this->category;
     }
 
-    public function addCategory(Category $category): self
+    /**
+     * @param Category $category
+     * @return void
+     */
+    public function addCategory(Category $category): void
     {
         if (!$this->category->contains($category)) {
             $this->category[] = $category;
         }
-
-        return $this;
     }
 
-    public function removeCategory(Category $category): self
+    /**
+     * @param Category $category
+     * @return void
+     */
+    public function removeCategory(Category $category): void
     {
         $this->category->removeElement($category);
 
-        return $this;
     }
 }

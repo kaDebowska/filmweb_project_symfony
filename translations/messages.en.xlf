@@ -50,6 +50,22 @@
                 <source>label.category</source>
                 <target>Category</target>
             </trans-unit>
+            <trans-unit id="label.movie">
+                <source>label.movie</source>
+                <target>Movie</target>
+            </trans-unit>
+            <trans-unit id="label.content">
+                <source>label.content</source>
+                <target>Content</target>
+            </trans-unit>
+            <trans-unit id="label.author_email">
+                <source>label.author_email</source>
+                <target>Author email</target>
+            </trans-unit>
+            <trans-unit id="label.author_nick">
+                <source>label.author_nick</source>
+                <target>Author nick</target>
+            </trans-unit>
             <trans-unit id="navbar.profile">
                 <source>navbar.profile</source>
                 <target>Profile</target>
@@ -154,9 +170,21 @@
                 <source>title.category_delete</source>
                 <target>Delete category #%id%</target>
             </trans-unit>
+            <trans-unit id="title.comment_delete">
+                <source>title.comment_delete</source>
+                <target>Delete comment #%id%</target>
+            </trans-unit>
+            <trans-unit id="title.comment_add">
+                <source>title.comment_add</source>
+                <target>Add comment</target>
+            </trans-unit>
             <trans-unit id="title.profile_settings">
                 <source>title.profile_settings</source>
                 <target>Profile settings</target>
+            </trans-unit>
+            <trans-unit id="title.comment_list">
+                <source>title.comment_list</source>
+                <target>Comments list</target>
             </trans-unit>
             <trans-unit id="action.view">
                 <source>action.view</source>
@@ -185,6 +213,10 @@
             <trans-unit id="action.back_to_list">
                 <source>action.back_to_list</source>
                 <target>Back to list</target>
+            </trans-unit>
+            <trans-unit id="action.add_comment">
+                <source>action.add_comment</source>
+                <target>Add comment</target>
             </trans-unit>
         </body>
     </file>

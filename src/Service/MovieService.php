@@ -92,7 +92,7 @@ class MovieService implements MovieServiceInterface
     /**
      * Save entity.
      *
-     * @param Movie $movie Task entity
+     * @param Movie $movie Movie entity
      */
     public function save(Movie $movie): void
     {

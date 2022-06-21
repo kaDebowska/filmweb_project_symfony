@@ -10,6 +10,7 @@ use App\Entity\Movie;
 use App\Form\DataTransformer\CategoriesDataTransformer;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -59,7 +60,7 @@ class MovieType extends AbstractType
         );
         $builder->add(
             'year',
-            \Symfony\Component\Form\Extension\Core\Type\IntegerType::class,
+            IntegerType::class,
             [
                 'label' => 'label.year',
                 'required' => true,
@@ -68,7 +69,7 @@ class MovieType extends AbstractType
         );
         $builder->add(
             'duration',
-            \Symfony\Component\Form\Extension\Core\Type\IntegerType::class,
+            IntegerType::class,
             [
                 'label' => 'label.duration',
                 'required' => true,
