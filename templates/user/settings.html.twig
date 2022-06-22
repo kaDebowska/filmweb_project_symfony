@@ -6,8 +6,7 @@
 
 {% block body %}
     <h1>{{ 'title.profile_settings'|trans}}</h1>
-    <h2>Change password</h2>
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    {{ form_end(form) }}
+    <a href="{{ url('user_change_password', {id: user.id}) }}" title="{{ 'action.change_password'|trans }}" class="btn btn-primary btn-lg">
+        {{ 'action.change_password' | trans }}
+    </a>
 {% endblock %}

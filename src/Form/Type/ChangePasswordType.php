@@ -1,6 +1,6 @@
 <?php
 /**
- * User type.
+ * Change password type.
  */
 
 namespace App\Form\Type;
@@ -9,29 +9,42 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UserType extends AbstractType
+/**
+ * Class ChangePasswordType
+ */
+class ChangePasswordType extends AbstractType
 {
+    /**
+     * Builds the form.
+     *
+     * This method is called for each type in the hierarchy starting from the
+     * top most type. Type extensions can further modify the form.
+     *
+     * @param array<string, mixed> $options
+     *
+     * @see FormTypeExtensionInterface::buildForm()
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'mapped' => false,
-                'invalid_message' => 'The password fields must match.',
+                'invalid_message' => 'message.password_match',
                 'options' => ['attr' => ['class' => 'password-field']],
                 'required' => true,
-                'first_options' => ['label' => 'New Password'],
-                'second_options' => ['label' => 'Repeat Password'],
+                'first_options' => ['label' => 'label.new_password'],
+                'second_options' => ['label' => 'label.repeat_password'],
                 'attr' => ['autocomplete' => 'off'],
-            ])
-            ->add('submit', SubmitType::class)
-        ;
+            ]);
     }
 
+    /**
+     * Configures the options for this type.
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

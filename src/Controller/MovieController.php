@@ -79,8 +79,6 @@ class MovieController extends AbstractController
     {
         $filters = [];
         $filters['category_id'] = $request->query->getInt('filters_category_id');
-        //$filters['tag_id'] = $request->query->getInt('filters_tag_id');
-
         return $filters;
     }
     /**
@@ -175,7 +173,7 @@ class MovieController extends AbstractController
                 $this->translator->trans('message.edited_successfully')
             );
 
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('movie_show', ['id' => $movie->getId()]);
         }
 
         return $this->render('movie/edit.html.twig', [

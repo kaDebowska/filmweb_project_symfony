@@ -47,7 +47,7 @@
                             {{ 'navbar.profile' | trans }}</a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="user-dropdown">
                 <li><a class="dropdown-item" href="{{ path('app_logout') }}">{{ 'navbar.log_out' | trans }}</a></li>
-{#                <li><a class="dropdown-item" href="{{ url('user_settings', {id: user.id}) }}">{{ 'navbar.settings' | trans }}</a></li>#}
+                <li><a class="dropdown-item" href="{{ url('user_settings')}}">{{ 'navbar.settings' | trans }}</a></li>
             </ul>
             </div>
             {% else %}

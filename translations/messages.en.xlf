@@ -66,6 +66,14 @@
                 <source>label.author_nick</source>
                 <target>Author nick</target>
             </trans-unit>
+            <trans-unit id="label.new_password">
+                <source>label.new_password</source>
+                <target>New password</target>
+            </trans-unit>
+            <trans-unit id="label.repeat_password">
+                <source>label.repeat_password</source>
+                <target>Repeat password</target>
+            </trans-unit>
             <trans-unit id="navbar.profile">
                 <source>navbar.profile</source>
                 <target>Profile</target>
@@ -121,6 +129,10 @@
             <trans-unit id="message.access_denied">
                 <source>message.access_denied</source>
                 <target>Access denied!</target>
+            </trans-unit>
+            <trans-unit id="message.password_match">
+                <source>message.password_match</source>
+                <target>Password must match.</target>
             </trans-unit>
             <trans-unit id="title.record_list">
                 <source>title.record_list</source>
@@ -182,6 +194,10 @@
                 <source>title.profile_settings</source>
                 <target>Profile settings</target>
             </trans-unit>
+            <trans-unit id="title.change_password">
+                <source>title.change_password</source>
+                <target>Change password</target>
+            </trans-unit>
             <trans-unit id="title.comment_list">
                 <source>title.comment_list</source>
                 <target>Comments list</target>
@@ -214,9 +230,17 @@
                 <source>action.back_to_list</source>
                 <target>Back to list</target>
             </trans-unit>
+            <trans-unit id="action.back_to_profile_settings">
+                <source>action.back_to_profile_settings</source>
+                <target>Back to profile settings</target>
+            </trans-unit>
             <trans-unit id="action.add_comment">
                 <source>action.add_comment</source>
                 <target>Add comment</target>
+            </trans-unit>
+            <trans-unit id="action.change_password">
+                <source>action.change_password</source>
+                <target>Change password</target>
             </trans-unit>
         </body>
     </file>

@@ -5,24 +5,20 @@
 
 namespace App\Controller;
 
+use App\Form\Type\ChangePasswordType;
 use App\Service\UserServiceInterface;
-use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\Persistence\ManagerRegistry;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use App\Entity\User;
-use App\Form\Type\UserType;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class UserController.
  */
-
 class UserController extends AbstractController
 {
     /**
@@ -52,6 +48,20 @@ class UserController extends AbstractController
         $this->translator = $translator;
         $this->userPasswordHasher = $userPasswordHasher;
     }
+    /**
+     * Index action.
+     *
+     * @return Response HTTP response
+     */
+    #[Route('/settings', name: 'user_settings', methods: 'GET')]
+    public function index(): Response
+    {
+        $user = $this->getUser();
+        return $this->render(
+            'user/settings.html.twig',
+            ['user' => $user]
+        );
+    }
 
     /**
      * Change password action.
@@ -61,23 +71,18 @@ class UserController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}/settings', name: 'user_settings', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
+    #[Route('/settings/{id}/change-password', name: 'user_change_password', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
+    #[IsGranted('EDIT', subject: 'user')]
     public function changePassword(Request $request, User $user): Response
     {
-        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
-            $this->addFlash(
-                'danger',
-                $this->translator->trans('message.access_denied')
-            );
-
-            return $this->redirectToRoute('app_login');
-        }
-        $use = $this->getUser();
-
-        $form = $this->createForm(UserType::class, $user, [
-            'method' => 'PUT',
-            'action' => $this->generateUrl('user_settings', ['id' => $user->getId()]),
-        ]);
+        $form = $this->createForm(
+            ChangePasswordType::class,
+            $user,
+            [
+                'method' => 'PUT',
+                'action' => $this->generateUrl('user_change_password', ['id' => $user->getId()]),
+            ]
+        );
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -94,17 +99,12 @@ class UserController extends AbstractController
                 $this->translator->trans('message.edited_successfully')
             );
 
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('movie_index');
         }
 
-        return $this->render('user/settings.html.twig', [
+        return $this->render('user/password.html.twig', [
             'form' => $form->createView(),
             'user' => $user,
         ]);
-
     }
 }
-
-
-
-
