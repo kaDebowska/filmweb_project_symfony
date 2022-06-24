@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Comment entity
+ */
 namespace App\Entity;
 
 use App\Repository\CommentRepository;
@@ -10,8 +12,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Comment.
- *
- * @psalm-suppress MissingConstructor
  */
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
 #[ORM\Table(name: 'comments')]
@@ -43,7 +43,7 @@ class Comment
      *
      * @var string|null
      */
-    #[ORM\Column(type: 'string', length: 180, unique: true)]
+    #[ORM\Column(type: 'string', length: 180, nullable: false)]
     #[Assert\NotBlank]
     #[Assert\Email]
     private ?string $authorEmail;
@@ -53,8 +53,9 @@ class Comment
      *
      * @var string|null
      */
-    #[ORM\Column(type: 'string', length: 255, nullable: false)]
+    #[ORM\Column(type: 'string', length: 45, nullable: false)]
     #[Assert\NotBlank]
+    #[Assert\Length(min: 3, max: 45)]
     private ?string $authorNick = null;
 
     /**

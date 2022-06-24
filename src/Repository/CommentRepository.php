@@ -1,12 +1,18 @@
 <?php
-
+/**
+ * Comment repository
+ */
 namespace App\Repository;
 
 use App\Entity\Comment;
+use App\Entity\Movie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
+
 /**
+ * Class CommentRepository
+ *
  * @extends ServiceEntityRepository<Comment>
  *
  * @method Comment|null find($id, $lockMode = null, $lockVersion = null)
@@ -25,7 +31,7 @@ class CommentRepository extends ServiceEntityRepository
      *
      * @constant int
      */
-    public const PAGINATOR_ITEMS_PER_PAGE = 10;
+    public const PAGINATOR_ITEMS_PER_PAGE = 3;
 
     /**
      * Constructor.
@@ -42,15 +48,18 @@ class CommentRepository extends ServiceEntityRepository
      *
      * @return QueryBuilder Query builder
      */
-    public function queryAll(): QueryBuilder
+    public function queryAll(Movie $movie): QueryBuilder
     {
-        return $this->getOrCreateQueryBuilder()
+        $queryBuilder = $this->getOrCreateQueryBuilder()
             ->select(
                 'comment',
                 'partial movie.{id, title}'
             )
             ->join('comment.movie', 'movie')
             ->orderBy('comment.createdAt', 'DESC');
+        $queryBuilder->andWhere('comment.movie = :movie')
+            ->setParameter('movie', $movie);
+        return $queryBuilder;
     }
 
     /**

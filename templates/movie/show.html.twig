@@ -20,16 +20,22 @@
             <dd>{{ movie.director }}</dd>
             <dt>{{ 'label.description'|trans }}</dt>
             <dd>{{ movie.description }}</dd>
-            <dt>{{ 'label.comments' }}</dt>
-{#            {% for comment in movie.comment %}#}
-{#                <dd>{{ comment.content }}</dd>#}
-{#            {% endfor %}#}
-{#            <dd>{{ comment.content }}</dd>#}
             <dt>{{ 'label.created_at'|trans }}</dt>
             <dd>{{ movie.createdAt|format_date('long')}}</dd>
             <dt>{{ 'label.updated_at'|trans }}</dt>
             <dd>{{ movie.updatedAt|format_date('long') }}</dd>
+            <dt>{{ 'label.comments'|trans }}</dt>
+            {% for comment in commentPagination.items %}
+                <dd>
+                    <a href="{{ url('comment_show', {id: comment.id}) }}" title="{{ 'title.comment_details'|trans({'%id%': comment.id|default('')})  }}">
+                        {{ comment.content }} </a>
+                </dd>
+            {% endfor %}
+            <div class="navigation text-center">
+                {{ knp_pagination_render(commentPagination) }}
+            </div>
         </dl>
+
         <div class="d-flex justify-content-start">
 
             <a href="{{ url('comment_create', {id: movie.id}) }}" title="{{ 'action.create'|trans }}" class="btn btn-primary btn-lg">
@@ -39,11 +45,11 @@
                 {{ 'action.back_to_list'|trans }}
             </a>
             {% if is_granted('ROLE_ADMIN') %}
-                <a href="{{ url('movie_delete', {id: movie.id}) }}" title="{{ 'action.delete'|trans }}" class="btn btn-danger btn-lg">
-                    {{ 'action.delete'|trans }}
-                </a>
                 <a href="{{ url('movie_edit', {id: movie.id}) }}" title="{{ 'action.edit'|trans }}" class="btn btn-warning btn-lg">
                     {{ 'action.edit'|trans }}
+                </a>
+                <a href="{{ url('movie_delete', {id: movie.id}) }}" title="{{ 'action.delete'|trans }}" class="btn btn-danger btn-lg">
+                    {{ 'action.delete'|trans }}
                 </a>
             {% endif %}
         </div>

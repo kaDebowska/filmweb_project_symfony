@@ -6,9 +6,9 @@
                 <source>label.actions</source>
                 <target>Actions</target>
             </trans-unit>
-            <trans-unit id="label.comment">
-                <source>label.comment</source>
-                <target>Comment</target>
+            <trans-unit id="label.comments">
+                <source>label.comments</source>
+                <target>Comments</target>
             </trans-unit>
             <trans-unit id="label.created_at">
                 <source>label.created_at</source>
@@ -74,32 +74,32 @@
                 <source>label.repeat_password</source>
                 <target>Repeat password</target>
             </trans-unit>
-            <trans-unit id="navbar.profile">
-                <source>navbar.profile</source>
+            <trans-unit id="label.user_name">
+                <source>label.user_name</source>
+                <target>User name</target>
+            </trans-unit>
+            <trans-unit id="label.profile">
+                <source>label.profile</source>
                 <target>Profile</target>
             </trans-unit>
-            <trans-unit id="navbar.movies">
-                <source>navbar.movies</source>
+            <trans-unit id="label.movies">
+                <source>label.movies</source>
                 <target>Movies</target>
             </trans-unit>
-            <trans-unit id="navbar.categories">
-                <source>navbar.categories</source>
+            <trans-unit id="label.categories">
+                <source>label.categories</source>
                 <target>Categories</target>
             </trans-unit>
-            <trans-unit id="navbar.log_in">
-                <source>navbar.log_in</source>
+            <trans-unit id="label.log_in">
+                <source>label.log_in</source>
                 <target>Log in</target>
             </trans-unit>
-            <trans-unit id="navbar.log_out">
-                <source>navbar.log_out</source>
+            <trans-unit id="label.log_out">
+                <source>label.log_out</source>
                 <target>Log out</target>
             </trans-unit>
-            <trans-unit id="navbar.sign_up">
-                <source>navbar.sign_up</source>
-                <target>Sign up</target>
-            </trans-unit>
-            <trans-unit id="navbar.settingd">
-                <source>navbar.settings</source>
+            <trans-unit id="label.settings">
+                <source>label.settings</source>
                 <target>Settings</target>
             </trans-unit>
             <trans-unit id="message.empty_list">
@@ -154,9 +154,9 @@
                 <source>title.movie_details</source>
                 <target>Details of movie #%id%</target>
             </trans-unit>
-            <trans-unit id="title.category_details">
-                <source>title.category_details</source>
-                <target>Category details</target>
+            <trans-unit id="title.comment_details">
+                <source>title.comment_details</source>
+                <target>Details of comment #%id%</target>
             </trans-unit>
             <trans-unit id="title.category_create">
                 <source>title.category_create</source>
@@ -198,6 +198,10 @@
                 <source>title.change_password</source>
                 <target>Change password</target>
             </trans-unit>
+            <trans-unit id="title.edit_profile_details">
+                <source>title.edit_profile_details</source>
+                <target>Edit profile details</target>
+            </trans-unit>
             <trans-unit id="title.comment_list">
                 <source>title.comment_list</source>
                 <target>Comments list</target>
@@ -230,6 +234,10 @@
                 <source>action.back_to_list</source>
                 <target>Back to list</target>
             </trans-unit>
+            <trans-unit id="action.back_to_movie_details">
+                <source>action.back_to_movie_details</source>
+                <target>Back to movie details</target>
+            </trans-unit>
             <trans-unit id="action.back_to_profile_settings">
                 <source>action.back_to_profile_settings</source>
                 <target>Back to profile settings</target>
@@ -241,6 +249,10 @@
             <trans-unit id="action.change_password">
                 <source>action.change_password</source>
                 <target>Change password</target>
+            </trans-unit>
+            <trans-unit id="action.edit_profile_details">
+                <source>action.edit_profile_details</source>
+                <target>Edit profile details</target>
             </trans-unit>
         </body>
     </file>

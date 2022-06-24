@@ -46,20 +46,24 @@ class CommentController extends AbstractController
     }
 
     /**
-     * Index action.
+     * Show action.
      *
-     * @param Request $request HTTP Request
+     * @param Comment $comment Comment entity
      *
      * @return Response HTTP response
      */
-    #[Route(name: 'comment_index', methods: 'GET')]
-    public function index(Request $request): Response
+    #[Route(
+        '/{id}',
+        name: 'comment_show',
+        requirements: ['id' => '[1-9]\d*'],
+        methods: 'GET',
+    )]
+    public function show(Comment $comment): Response
     {
-        $pagination = $this->commentService->getPaginatedList(
-            $request->query->getInt('page', 1)
+        return $this->render(
+            'comment/show.html.twig',
+            ['comment' => $comment]
         );
-
-        return $this->render('comment/index.html.twig', ['pagination' => $pagination]);
     }
 
     /**
@@ -95,7 +99,7 @@ class CommentController extends AbstractController
                 $this->translator->trans('message.deleted_successfully')
             );
 
-            return $this->redirectToRoute('comment_index');
+            return $this->redirectToRoute('movie_index');
         }
 
         return $this->render('comment/delete.html.twig', [

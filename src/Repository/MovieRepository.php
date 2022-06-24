@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Movie repository
+ */
 namespace App\Repository;
 
 use App\Entity\Category;
@@ -11,6 +13,8 @@ use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
+ * Class MovieRepository
+ *
  * @extends ServiceEntityRepository<Movie>
  *
  * @method Movie|null find($id, $lockMode = null, $lockVersion = null)

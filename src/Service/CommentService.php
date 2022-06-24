@@ -64,13 +64,14 @@ class CommentService implements CommentServiceInterface
      * Get paginated list.
      *
      * @param int $page Page number
+     * @param Movie $movie Movie entity
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
-    public function getPaginatedList(int $page): PaginationInterface
+    public function getPaginatedList(int $page, Movie $movie): PaginationInterface
     {
         return $this->paginator->paginate(
-            $this->commentRepository->queryAll(),
+            $this->commentRepository->queryAll($movie),
             $page,
             CommentRepository::PAGINATOR_ITEMS_PER_PAGE
         );

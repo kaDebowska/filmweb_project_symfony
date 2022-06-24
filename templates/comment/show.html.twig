@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.comment_details'|trans({'%id%': comment.id|default('')}) }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'title.comment_details'|trans({'%id%': comment.id|default('')}) }}</h1>
+    {% if comment is defined and comment|length %}
+        <dl class="dl-horizontal">
+            <dt>{{ 'label.created_at'|trans }}</dt>
+            <dd>{{ comment.createdAt|format_date('long')}}</dd>
+            <dt>{{ 'label.author_nick'|trans }}</dt>
+            <dd>{{ comment.authorNick }}</dd>
+            <dt>{{ 'label.author_email'|trans }}</dt>
+            <dd>{{ comment.authorEmail }}</dd>
+            <dt>{{ 'label.content'|trans }}</dt>
+            <dd>{{ comment.content }}</dd>
+        </dl>
+        <div class="d-flex justify-content-start">
+            <a href="{{ url('movie_show', {id: comment.movie.id}) }}" title="{{ 'action.back_to_movie_details'|trans }}" class="btn btn-primary btn-lg">
+                {{ 'action.back_to_movie_details'|trans }}
+            </a>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ url('comment_delete', {id: comment.id}) }}" title="{{ 'action.delete'|trans }}" class="btn btn-danger btn-lg">
+                    {{ 'action.delete'|trans }}
+                </a>
+            {% endif %}
+        </div>
+    {% else %}
+        <p class="alert alert-warning" role="alert">
+            {{ 'message.record_not_found'|trans }}
+        </p>
+    {% endif %}
+{% endblock %}

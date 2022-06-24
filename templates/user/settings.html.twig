@@ -6,7 +6,15 @@
 
 {% block body %}
     <h1>{{ 'title.profile_settings'|trans}}</h1>
-    <a href="{{ url('user_change_password', {id: user.id}) }}" title="{{ 'action.change_password'|trans }}" class="btn btn-primary btn-lg">
-        {{ 'action.change_password' | trans }}
-    </a>
+    <div>
+        <a href="{{ url('user_change_password', {id: user.id}) }}" title="{{ 'action.change_password'|trans }}" class="btn btn-primary btn-lg mt-3">
+            {{ 'action.change_password' | trans }}
+        </a>
+    </div>
+    <div>
+        <a href="{{ url('user_edit_details', {id: user.id}) }}" title="{{ 'action.edit_profile_details'|trans }}" class="btn btn-primary btn-lg mt-5">
+            {{ 'action.edit_profile_details' | trans }}
+        </a>
+    </div>
+
 {% endblock %}

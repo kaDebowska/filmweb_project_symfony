@@ -7,6 +7,7 @@ namespace App\Controller;
 
 use App\Entity\Movie;
 use App\Form\Type\MovieType;
+use App\Service\CommentServiceInterface;
 use App\Service\MovieServiceInterface;
 use Doctrine\ORM\NonUniqueResultException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,7 +16,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
-
 
 /**
  * Class MovieController.
@@ -33,16 +33,19 @@ class MovieController extends AbstractController
      */
     private TranslatorInterface $translator;
 
+    private CommentServiceInterface $commentService;
+
     /**
      * Constructor.
      *
      * @param MovieServiceInterface $movieService Movie service
      * @param TranslatorInterface  $translator  Translator
      */
-    public function __construct(MovieServiceInterface $movieService, TranslatorInterface $translator)
+    public function __construct(MovieServiceInterface $movieService, TranslatorInterface $translator, CommentServiceInterface $commentService)
     {
         $this->movieService = $movieService;
         $this->translator = $translator;
+        $this->commentService = $commentService;
     }
 
     /**
@@ -86,6 +89,8 @@ class MovieController extends AbstractController
      *
      * @param Movie $movie Movie entity
      *
+     * @param Request $request request
+     *
      * @return Response HTTP response
      */
     #[Route(
@@ -94,11 +99,15 @@ class MovieController extends AbstractController
         requirements: ['id' => '[1-9]\d*'],
         methods: 'GET',
     )]
-    public function show(Movie $movie): Response
+    public function show(Movie $movie, Request $request): Response
     {
+        $commentPagination = $this->commentService->getPaginatedList(
+            $request->query->getInt('page', 1),
+            $movie
+        );
         return $this->render(
             'movie/show.html.twig',
-            ['movie' => $movie]
+            ['movie' => $movie, 'commentPagination' => $commentPagination]
         );
     }
 
