@@ -1,12 +1,13 @@
 <?php
 /**
- * User details type.
+ * User type.
  */
 
 namespace App\Form\Type;
 
-use App\Entity\UserDetail;
+use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -14,7 +15,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * Class UserDetailsType.
  */
-class UserDetailsType extends AbstractType
+class UserType extends AbstractType
 {
     /**
      * Builds the form.
@@ -29,12 +30,11 @@ class UserDetailsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add(
-            'name',
-            TextType::class,
+            'email',
+            EmailType::class,
             [
-                'label' => 'label.user_name',
+                'label' => 'label.user_email',
                 'required' => true,
-                'attr' => ['max_length' => 64],
             ]
         );
     }
@@ -44,7 +44,7 @@ class UserDetailsType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults(['data_class' => UserDetail::class]);
+        $resolver->setDefaults(['data_class' => User::class]);
     }
 
     /**
@@ -55,6 +55,6 @@ class UserDetailsType extends AbstractType
      */
     public function getBlockPrefix(): string
     {
-        return 'user_detail';
+        return 'user';
     }
 }

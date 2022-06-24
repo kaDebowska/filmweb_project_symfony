@@ -33,20 +33,6 @@ class UserFixtures extends AbstractBaseFixtures
      */
     protected function loadData(): void
     {
-        $this->createMany(10, 'users', function ($i) {
-            $user = new User();
-            $user->setEmail(sprintf('user%d@example.com', $i));
-            $user->setRoles([UserRole::ROLE_USER->value]);
-            $user->setPassword(
-                $this->passwordHasher->hashPassword(
-                    $user,
-                    'user1234'
-                )
-            );
-
-            return $user;
-        });
-
         $this->createMany(3, 'admins', function ($i) {
             $user = new User();
             $user->setEmail(sprintf('admin%d@example.com', $i));

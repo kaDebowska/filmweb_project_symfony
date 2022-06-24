@@ -42,10 +42,6 @@
                 <source>label.year</source>
                 <target>Year</target>
             </trans-unit>
-            <trans-unit id="label.tags">
-                <source>label.tags</source>
-                <target>Tags</target>
-            </trans-unit>
             <trans-unit id="label.category">
                 <source>label.category</source>
                 <target>Category</target>
@@ -74,9 +70,9 @@
                 <source>label.repeat_password</source>
                 <target>Repeat password</target>
             </trans-unit>
-            <trans-unit id="label.user_name">
-                <source>label.user_name</source>
-                <target>User name</target>
+            <trans-unit id="label.user_email">
+                <source>label.user_email</source>
+                <target>Your email</target>
             </trans-unit>
             <trans-unit id="label.profile">
                 <source>label.profile</source>
@@ -129,10 +125,6 @@
             <trans-unit id="message.access_denied">
                 <source>message.access_denied</source>
                 <target>Access denied!</target>
-            </trans-unit>
-            <trans-unit id="message.password_match">
-                <source>message.password_match</source>
-                <target>Password must match.</target>
             </trans-unit>
             <trans-unit id="title.record_list">
                 <source>title.record_list</source>
