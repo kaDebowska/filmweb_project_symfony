@@ -19,7 +19,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: 'users')]
 #[ORM\UniqueConstraint(name: 'email_idx', columns: ['email'])]
-#[UniqueEntity(fields: ['email'], message:'message.email_exists')]
+#[UniqueEntity(fields: ['email'], message: 'message.email_exists')]
 class User implements PasswordAuthenticatedUserInterface, UserInterface
 {
     /**
@@ -93,6 +93,8 @@ class User implements PasswordAuthenticatedUserInterface, UserInterface
      * A visual identifier that represents this user.
      *
      * @see UserInterface
+     *
+     * @return string email
      */
     public function getUserIdentifier(): string
     {
@@ -101,6 +103,8 @@ class User implements PasswordAuthenticatedUserInterface, UserInterface
 
     /**
      * @deprecated since Symfony 5.3, use getUserIdentifier instead
+     *
+     * @return string email
      */
     public function getUsername(): string
     {
@@ -160,6 +164,8 @@ class User implements PasswordAuthenticatedUserInterface, UserInterface
      * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
      *
      * @see UserInterface
+     *
+     * @return string|null
      */
     public function getSalt(): ?string
     {

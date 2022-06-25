@@ -5,6 +5,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Form\Type\ChangePasswordType;
 use App\Form\Type\UserType;
 use App\Service\UserServiceInterface;
@@ -14,7 +15,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\User;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
@@ -38,23 +38,20 @@ class UserController extends AbstractController
      */
     private UserPasswordHasherInterface $userPasswordHasher;
 
-
     /**
      * Constructor.
      *
-     * @param UserServiceInterface $userService User service
-     * @param TranslatorInterface      $translator  Translator
+     * @param UserServiceInterface        $userService        User service
+     * @param TranslatorInterface         $translator         Translator
      * @param UserPasswordHasherInterface $userPasswordHasher User password hasher
      */
-    public function __construct(
-        UserServiceInterface $userService,
-        TranslatorInterface $translator,
-        UserPasswordHasherInterface $userPasswordHasher,
-    ) {
+    public function __construct(UserServiceInterface $userService, TranslatorInterface $translator, UserPasswordHasherInterface $userPasswordHasher)
+    {
         $this->userService = $userService;
         $this->translator = $translator;
         $this->userPasswordHasher = $userPasswordHasher;
     }
+
     /**
      * User settings action.
      *
@@ -64,18 +61,18 @@ class UserController extends AbstractController
     public function userSettings(): Response
     {
         $user = $this->getUser();
+
         return $this->render(
             'user/settings.html.twig',
             ['user' => $user]
         );
     }
 
-
     /**
      * Change password action.
      *
-     * @param Request  $request  HTTP request
-     * @param User $user User entity
+     * @param Request $request HTTP request
+     * @param User    $user    User entity
      *
      * @return Response HTTP response
      */
@@ -119,8 +116,8 @@ class UserController extends AbstractController
     /**
      * Change password action.
      *
-     * @param Request  $request  HTTP request
-     * @param User $user User entity
+     * @param Request $request HTTP request
+     * @param User    $user    User entity
      *
      * @return Response HTTP response
      */

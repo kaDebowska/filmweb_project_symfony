@@ -29,7 +29,7 @@ class CategoryService implements CategoryServiceInterface
     private PaginatorInterface $paginator;
 
     /**
-     * Movie repository
+     * Movie repository.
      */
     private MovieRepository $movieRepository;
 
@@ -38,6 +38,7 @@ class CategoryService implements CategoryServiceInterface
      *
      * @param CategoryRepository $categoryRepository Category repository
      * @param PaginatorInterface $paginator          Paginator
+     * @param MovieRepository    $movieRepository    Movie repository
      */
     public function __construct(CategoryRepository $categoryRepository, PaginatorInterface $paginator, MovieRepository $movieRepository)
     {

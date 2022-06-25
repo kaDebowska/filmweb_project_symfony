@@ -32,12 +32,11 @@ class CommentController extends AbstractController
      */
     private TranslatorInterface $translator;
 
-
     /**
      * Constructor.
      *
      * @param CommentServiceInterface $commentService Comment service
-     * @param TranslatorInterface $translator Translator
+     * @param TranslatorInterface     $translator     Translator
      */
     public function __construct(CommentServiceInterface $commentService, TranslatorInterface $translator)
     {
@@ -70,7 +69,7 @@ class CommentController extends AbstractController
      * Delete action.
      *
      * @param Request $request HTTP request
-     * @param Comment    $comment    Comment entity
+     * @param Comment $comment Comment entity
      *
      * @return Response HTTP response
      */
@@ -112,10 +111,11 @@ class CommentController extends AbstractController
      * Create action.
      *
      * @param Request $request HTTP request
+     * @param Movie   $movie   Movie entity
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}/create', name: 'comment_create', requirements: ['id' => '[1-9]\d*'], methods: 'GET|POST', )]
+    #[Route('/{id}/create', name: 'comment_create', requirements: ['id' => '[1-9]\d*'], methods: 'GET|POST')]
     public function create(Request $request, Movie $movie): Response
     {
         $comment = new Comment();
@@ -135,7 +135,7 @@ class CommentController extends AbstractController
 
         return $this->render('comment/create.html.twig', [
             'form' => $form->createView(),
-            'movie' => $movie
+            'movie' => $movie,
         ]);
     }
 }

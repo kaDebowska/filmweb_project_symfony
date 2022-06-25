@@ -1,7 +1,8 @@
 <?php
 /**
- * User voter
+ * User voter.
  */
+
 namespace App\Security\Voter;
 
 use App\Entity\Enum\UserRole;
@@ -12,7 +13,7 @@ use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * class UserVoter
+ * class UserVoter.
  */
 class UserVoter extends Voter
 {
@@ -39,8 +40,6 @@ class UserVoter extends Voter
 
     /**
      * Security helper.
-     *
-     * @var Security
      */
     private Security $security;
 
@@ -68,6 +67,16 @@ class UserVoter extends Voter
             && $subject instanceof User;
     }
 
+    /**
+     * Perform a single access check operation on a given attribute, subject and token.
+     * It is safe to assume that $attribute and $subject already passed the "supports()" method check.
+     *
+     * @param string         $attribute Permission name
+     * @param mixed          $subject   Object
+     * @param TokenInterface $token     Security token
+     *
+     * @return bool Vote result
+     */
     protected function voteOnAttribute(string $attribute, $subject, TokenInterface $token): bool
     {
         $user = $token->getUser();
@@ -89,9 +98,10 @@ class UserVoter extends Voter
 
     /**
      * Check if user can edit user.
-     * @param User $user
+     *
+     * @param User $user User entity
      * @param UserInterface $manager
-     * @return bool
+     * @return bool Result
      */
     private function canEdit(User $user, UserInterface $manager): bool
     {
@@ -100,9 +110,10 @@ class UserVoter extends Voter
 
     /**
      * Check if user can view user.
-     * @param User $user
+     *
+     * @param User $user User entity
      * @param UserInterface $manager
-     * @return bool
+     * @return bool Result
      */
     private function canView(User $user, UserInterface $manager): bool
     {
@@ -111,9 +122,10 @@ class UserVoter extends Voter
 
     /**
      * Check if user can delete user.
-     * @param User $user
+     *
+     * @param User $user User entity
      * @param UserInterface $manager
-     * @return bool
+     * @return bool Result
      */
     private function canDelete(User $user, UserInterface $manager): bool
     {

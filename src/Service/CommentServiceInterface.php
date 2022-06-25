@@ -7,7 +7,6 @@ namespace App\Service;
 
 use App\Entity\Comment;
 use App\Entity\Movie;
-use Doctrine\ORM\NonUniqueResultException;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 
 /**
@@ -18,7 +17,8 @@ interface CommentServiceInterface
     /**
      * Get paginated list.
      *
-     * @param int $page Page number
+     * @param int   $page  Page number
+     * @param Movie $movie Movie entity
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */

@@ -1,7 +1,8 @@
 <?php
 /**
- * Comment entity
+ * Comment entity.
  */
+
 namespace App\Entity;
 
 use App\Repository\CommentRepository;
@@ -79,7 +80,6 @@ class Comment
     #[ORM\JoinColumn(nullable: false)]
     private Movie $movie;
 
-
     /**
      * Getter for Id.
      *
@@ -102,8 +102,8 @@ class Comment
 
     /**
      * Setter for Content.
-     * @param string $content
-     * @return void
+     *
+     * @param string $content content
      */
     public function setContent(string $content): void
     {
@@ -113,7 +113,7 @@ class Comment
     /**
      * Getter for author email.
      *
-     * @return string|null
+     * @return string|null authorEmail
      */
     public function getAuthorEmail(): ?string
     {
@@ -122,8 +122,8 @@ class Comment
 
     /**
      * Setter for author email.
-     * @param string $authorEmail
-     * @return void
+     *
+     * @param string $authorEmail author email
      */
     public function setAuthorEmail(string $authorEmail): void
     {
@@ -132,31 +132,34 @@ class Comment
 
     /**
      * Getter for created at.
-     * @return DateTimeImmutable|null
+     *
+     * @return DateTimeImmutable|null Created at
      */
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?DateTimeImmutable
     {
         return $this->createdAt;
     }
 
     /**
      * Setter for created at.
-     * @param DateTimeImmutable $createdAt
-     * @return void
+     *
+     * @param DateTimeImmutable|null $createdAt Created at
      */
-    public function setCreatedAt(\DateTimeImmutable $createdAt): void
+    public function setCreatedAt(?DateTimeImmutable $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
 
     /**
      * Getter for movie.
-     * @return Movie|null
+     *
+     * @return Movie|null Movie
      */
     public function getMovie(): ?Movie
     {
         return $this->movie;
     }
+
 
     /**
      * Setter for movie.
@@ -168,6 +171,7 @@ class Comment
         $this->movie = $movie;
     }
 
+
     /**
      * Getter for author nick.
      * @return string|null
@@ -177,8 +181,9 @@ class Comment
         return $this->authorNick;
     }
 
+
     /**
-     * Setter for author nick
+     * Setter for author nick.
      * @param string|null $authorNick
      * @return void
      */

@@ -17,10 +17,11 @@ interface MovieServiceInterface
     /**
      * Get paginated list.
      *
-     * @param int $page Page number
+     * @param int                $page    Page number
      * @param array<string, int> $filters Filters array
      *
      * @return PaginationInterface<string, mixed> Paginated list
+     *
      * @throws NonUniqueResultException
      */
     public function getPaginatedList(int $page, array $filters = []): PaginationInterface;
@@ -31,6 +32,7 @@ interface MovieServiceInterface
      * @param array<string, int> $filters Raw filters from request
      *
      * @return array<string, object> Result array of filters
+     *
      * @throws NonUniqueResultException
      */
     public function prepareFilters(array $filters): array;

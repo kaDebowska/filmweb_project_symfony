@@ -8,7 +8,6 @@ namespace App\Service;
 use App\Entity\Comment;
 use App\Entity\Movie;
 use App\Repository\CommentRepository;
-use App\Repository\MovieRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
@@ -27,12 +26,11 @@ class CommentService implements CommentServiceInterface
      */
     private PaginatorInterface $paginator;
 
-
     /**
      * Constructor.
      *
-     * @param CommentRepository $commentRepository Comment repository
-     * @param PaginatorInterface $paginator Paginator
+     * @param CommentRepository  $commentRepository Comment repository
+     * @param PaginatorInterface $paginator         Paginator
      */
     public function __construct(CommentRepository $commentRepository, PaginatorInterface $paginator)
     {
@@ -63,7 +61,7 @@ class CommentService implements CommentServiceInterface
     /**
      * Get paginated list.
      *
-     * @param int $page Page number
+     * @param int   $page  Page number
      * @param Movie $movie Movie entity
      *
      * @return PaginationInterface<string, mixed> Paginated list

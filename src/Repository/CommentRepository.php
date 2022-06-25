@@ -1,7 +1,8 @@
 <?php
 /**
- * Comment repository
+ * Comment repository.
  */
+
 namespace App\Repository;
 
 use App\Entity\Comment;
@@ -11,7 +12,7 @@ use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * Class CommentRepository
+ * Class CommentRepository.
  *
  * @extends ServiceEntityRepository<Comment>
  *
@@ -46,6 +47,8 @@ class CommentRepository extends ServiceEntityRepository
     /**
      * Query all records.
      *
+     * @param Movie $movie Movie entity
+     *
      * @return QueryBuilder Query builder
      */
     public function queryAll(Movie $movie): QueryBuilder
@@ -59,19 +62,8 @@ class CommentRepository extends ServiceEntityRepository
             ->orderBy('comment.createdAt', 'DESC');
         $queryBuilder->andWhere('comment.movie = :movie')
             ->setParameter('movie', $movie);
-        return $queryBuilder;
-    }
 
-    /**
-     * Get or create new query builder.
-     *
-     * @param QueryBuilder|null $queryBuilder Query builder
-     *
-     * @return QueryBuilder Query builder
-     */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
-    {
-        return $queryBuilder ?? $this->createQueryBuilder('comment');
+        return $queryBuilder;
     }
 
     /**
@@ -97,31 +89,15 @@ class CommentRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param Comment $entity
-     * @param bool $flush
-     * @return void
+     * Get or create new query builder.
+     *
+     * @param QueryBuilder|null $queryBuilder Query builder
+     *
+     * @return QueryBuilder Query builder
      */
-    public function add(Comment $entity, bool $flush = false): void
+    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
-        $this->getEntityManager()->persist($entity);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
-    }
-
-    /**
-     * @param Comment $entity
-     * @param bool $flush
-     * @return void
-     */
-    public function remove(Comment $entity, bool $flush = false): void
-    {
-        $this->getEntityManager()->remove($entity);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
+        return $queryBuilder ?? $this->createQueryBuilder('comment');
     }
 
 //    /**

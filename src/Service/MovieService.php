@@ -31,19 +31,15 @@ class MovieService implements MovieServiceInterface
      */
     private CategoryServiceInterface $categoryService;
 
-
     /**
      * Constructor.
      *
      * @param CategoryServiceInterface $categoryService Category service
-     * @param MovieRepository    $movieRepository Movie repository
-     * @param PaginatorInterface $paginator       Paginator
+     * @param PaginatorInterface       $paginator       Paginator
+     * @param MovieRepository          $movieRepository Movie repository
      */
-    public function __construct(
-        CategoryServiceInterface $categoryService,
-        PaginatorInterface $paginator,
-        MovieRepository $movieRepository
-    ) {
+    public function __construct(CategoryServiceInterface $categoryService, PaginatorInterface $paginator, MovieRepository $movieRepository)
+    {
         $this->categoryService = $categoryService;
         $this->paginator = $paginator;
         $this->movieRepository = $movieRepository;
@@ -55,6 +51,7 @@ class MovieService implements MovieServiceInterface
      * @param array<string, int> $filters Raw filters from request
      *
      * @return array<string, object> Result array of filters
+     *
      * @throws NonUniqueResultException
      */
     public function prepareFilters(array $filters): array
@@ -66,16 +63,18 @@ class MovieService implements MovieServiceInterface
                 $resultFilters['category'] = $category;
             }
         }
+
         return $resultFilters;
     }
 
     /**
      * Get paginated list.
      *
-     * @param int $page Page number
+     * @param int                $page    Page number
      * @param array<string, int> $filters Filters array
      *
      * @return PaginationInterface<string, mixed> Paginated list
+     *
      * @throws NonUniqueResultException
      */
     public function getPaginatedList(int $page, array $filters = []): PaginationInterface

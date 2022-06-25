@@ -1,7 +1,8 @@
 <?php
 /**
- * Movie repository
+ * Movie repository.
  */
+
 namespace App\Repository;
 
 use App\Entity\Category;
@@ -13,7 +14,7 @@ use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * Class MovieRepository
+ * Class MovieRepository.
  *
  * @extends ServiceEntityRepository<Movie>
  *
@@ -64,7 +65,6 @@ class MovieRepository extends ServiceEntityRepository
 
         return $this->applyFiltersToList($queryBuilder, $filters);
     }
-
 
     /**
      * Count movies by category.

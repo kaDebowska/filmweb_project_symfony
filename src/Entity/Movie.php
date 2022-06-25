@@ -13,7 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
 /**
  * Class Movie.
  *
@@ -33,7 +32,6 @@ class Movie
     #[ORM\Column(type: 'integer')]
     private ?int $id = null;
 
-
     /**
      * Title.
      *
@@ -48,7 +46,7 @@ class Movie
     /**
      * Year.
      *
-     * @var integer|null
+     * @var int|null
      */
     #[ORM\Column(type: 'integer')]
     #[Assert\Type('integer')]
@@ -280,6 +278,8 @@ class Movie
     }
 
     /**
+     * Getter for category.
+     *
      * @return Collection<int, Category>
      */
     public function getCategory(): Collection
@@ -288,8 +288,9 @@ class Movie
     }
 
     /**
-     * @param Category $category
-     * @return void
+     * Add category.
+     *
+     * @param Category $category Category entity
      */
     public function addCategory(Category $category): void
     {
@@ -299,12 +300,12 @@ class Movie
     }
 
     /**
-     * @param Category $category
-     * @return void
+     * Remove category.
+     *
+     * @param Category $category Category entity
      */
     public function removeCategory(Category $category): void
     {
         $this->category->removeElement($category);
-
     }
 }

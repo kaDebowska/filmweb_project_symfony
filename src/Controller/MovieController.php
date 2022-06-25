@@ -38,8 +38,9 @@ class MovieController extends AbstractController
     /**
      * Constructor.
      *
-     * @param MovieServiceInterface $movieService Movie service
-     * @param TranslatorInterface  $translator  Translator
+     * @param MovieServiceInterface   $movieService   Movie service
+     * @param TranslatorInterface     $translator     Translator
+     * @param CommentServiceInterface $commentService Comment service
      */
     public function __construct(MovieServiceInterface $movieService, TranslatorInterface $translator, CommentServiceInterface $commentService)
     {
@@ -54,6 +55,7 @@ class MovieController extends AbstractController
      * @param Request $request HTTP Request
      *
      * @return Response HTTP response
+     *
      * @throws NonUniqueResultException
      */
     #[Route(name: 'movie_index', methods: 'GET')]
@@ -65,30 +67,16 @@ class MovieController extends AbstractController
             $filters
         );
 
-        return $this->render('movie/index.html.twig', [
-           'pagination' => $pagination,
-        ]);
+        return $this->render(
+            'movie/index.html.twig',
+            ['pagination' => $pagination]
+        );
     }
-    /**
-     * Get filters from request.
-     *
-     * @param Request $request HTTP request
-     *
-     * @return array<string, int> Array of filters
-     *
-     * @psalm-return array{category_id: int, tag_id: int, status_id: int}
-     */
-    private function getFilters(Request $request): array
-    {
-        $filters = [];
-        $filters['category_id'] = $request->query->getInt('filters_category_id');
-        return $filters;
-    }
+
     /**
      * Show action.
      *
-     * @param Movie $movie Movie entity
-     *
+     * @param Movie   $movie   Movie entity
      * @param Request $request request
      *
      * @return Response HTTP response
@@ -105,6 +93,7 @@ class MovieController extends AbstractController
             $request->query->getInt('page', 1),
             $movie
         );
+
         return $this->render(
             'movie/show.html.twig',
             ['movie' => $movie, 'commentPagination' => $commentPagination]
@@ -118,7 +107,7 @@ class MovieController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/create', name: 'movie_create', methods: 'GET|POST', )]
+    #[Route('/create', name: 'movie_create', methods: 'GET|POST')]
     public function create(Request $request): Response
     {
         if (!$this->isGranted('ROLE_ADMIN')) {
@@ -132,7 +121,6 @@ class MovieController extends AbstractController
         $movie = new Movie();
         $form = $this->createForm(MovieType::class, $movie, ['action' => $this->generateUrl('movie_create')]);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $this->movieService->save($movie);
 
@@ -153,7 +141,7 @@ class MovieController extends AbstractController
      * Edit action.
      *
      * @param Request $request HTTP request
-     * @param Movie    $movie    Task entity
+     * @param Movie   $movie   Task entity
      *
      * @return Response HTTP response
      */
@@ -195,7 +183,7 @@ class MovieController extends AbstractController
      * Delete action.
      *
      * @param Request $request HTTP request
-     * @param Movie    $movie    Movie entity
+     * @param Movie   $movie   Movie entity
      *
      * @return Response HTTP response
      */
@@ -231,5 +219,22 @@ class MovieController extends AbstractController
             'form' => $form->createView(),
             'movie' => $movie,
         ]);
+    }
+
+    /**
+     * Get filters from request.
+     *
+     * @param Request $request HTTP request
+     *
+     * @return array<string, int> Array of filters
+     *
+     * @psalm-return array{category_id: int, tag_id: int, status_id: int}
+     */
+    private function getFilters(Request $request): array
+    {
+        $filters = [];
+        $filters['category_id'] = $request->query->getInt('filters_category_id');
+
+        return $filters;
     }
 }

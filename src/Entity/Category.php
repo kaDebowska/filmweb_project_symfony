@@ -61,7 +61,6 @@ class Category
     #[Assert\Length(min: 3, max: 64)]
     private ?string $title;
 
-
     /**
      * Getter for Id.
      *
