@@ -39,7 +39,7 @@
         </table>
         {% if is_granted('ROLE_ADMIN') %}
             <p>
-                <a href="{{ url('category_create') }}" title="{{ 'action.create'|trans }}">
+                <a href="{{ url('category_create') }}" title="{{ 'action.create'|trans }}" class="btn btn-primary btn-lg">
                     {{ 'action.create'|trans }}
                 </a>
             </p>

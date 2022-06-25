@@ -4,19 +4,19 @@
         <body>
             <trans-unit id="label.actions">
                 <source>label.actions</source>
-                <target>Actions</target>
+                <target>Opcje</target>
             </trans-unit>
             <trans-unit id="label.comments">
                 <source>label.comments</source>
-                <target>Comments</target>
+                <target>Komentarze</target>
             </trans-unit>
             <trans-unit id="label.created_at">
                 <source>label.created_at</source>
-                <target>Created at</target>
+                <target>Utworzono</target>
             </trans-unit>
             <trans-unit id="label.updated_at">
                 <source>label.updated_at</source>
-                <target>Updated at</target>
+                <target>Zaktualizowano</target>
             </trans-unit>
             <trans-unit id="label.id">
                 <source>label.id</source>
@@ -24,219 +24,219 @@
             </trans-unit>
             <trans-unit id="label.title">
                 <source>label.title</source>
-                <target>Title</target>
+                <target>Tytuł</target>
             </trans-unit>
             <trans-unit id="label.description">
                 <source>label.description</source>
-                <target>Description</target>
+                <target>Opis</target>
             </trans-unit>
             <trans-unit id="label.director">
                 <source>label.director</source>
-                <target>Director</target>
+                <target>Reżyser</target>
             </trans-unit>
             <trans-unit id="label.duration">
                 <source>label.duration</source>
-                <target>Duration</target>
+                <target>Czas trwania</target>
             </trans-unit>
             <trans-unit id="label.year">
                 <source>label.year</source>
-                <target>Year</target>
+                <target>Rok</target>
             </trans-unit>
             <trans-unit id="label.category">
                 <source>label.category</source>
-                <target>Category</target>
+                <target>Kategoria</target>
             </trans-unit>
             <trans-unit id="label.movie">
                 <source>label.movie</source>
-                <target>Movie</target>
+                <target>Film</target>
             </trans-unit>
             <trans-unit id="label.content">
                 <source>label.content</source>
-                <target>Content</target>
+                <target>Treść</target>
             </trans-unit>
             <trans-unit id="label.author_email">
                 <source>label.author_email</source>
-                <target>Author email</target>
+                <target>Email autora</target>
             </trans-unit>
             <trans-unit id="label.author_nick">
                 <source>label.author_nick</source>
-                <target>Author nick</target>
+                <target>Nick autora</target>
             </trans-unit>
             <trans-unit id="label.new_password">
                 <source>label.new_password</source>
-                <target>New password</target>
+                <target>Nowe hasło</target>
             </trans-unit>
             <trans-unit id="label.repeat_password">
                 <source>label.repeat_password</source>
-                <target>Repeat password</target>
+                <target>Powtórz hasło</target>
             </trans-unit>
             <trans-unit id="label.user_email">
                 <source>label.user_email</source>
-                <target>Your email</target>
+                <target>Twój email</target>
             </trans-unit>
             <trans-unit id="label.profile">
                 <source>label.profile</source>
-                <target>Profile</target>
+                <target>Profil</target>
             </trans-unit>
             <trans-unit id="label.movies">
                 <source>label.movies</source>
-                <target>Movies</target>
+                <target>Filmy</target>
             </trans-unit>
             <trans-unit id="label.categories">
                 <source>label.categories</source>
-                <target>Categories</target>
+                <target>Kategorie</target>
             </trans-unit>
             <trans-unit id="label.log_in">
                 <source>label.log_in</source>
-                <target>Log in</target>
+                <target>Zaloguj się</target>
             </trans-unit>
             <trans-unit id="label.log_out">
                 <source>label.log_out</source>
-                <target>Log out</target>
+                <target>Wyloguj się</target>
             </trans-unit>
             <trans-unit id="label.settings">
                 <source>label.settings</source>
-                <target>Settings</target>
+                <target>Ustawienia</target>
             </trans-unit>
             <trans-unit id="message.empty_list">
                 <source>message.empty_list</source>
-                <target>List is empty.</target>
+                <target>Lista jest pusta.</target>
             </trans-unit>
             <trans-unit id="message.record_not_found">
                 <source>message.record_not_found</source>
-                <target>Record not found.</target>
+                <target>Nie znaleziono rekordu.</target>
             </trans-unit>
             <trans-unit id="message.created_successfully">
                 <source>message.created_successfully</source>
-                <target>Created successfully</target>
+                <target>Utworzono pomyślnie</target>
             </trans-unit>
             <trans-unit id="message.edited_successfully">
                 <source>message.edited_successfully</source>
-                <target>Edited successfully</target>
+                <target>Zmodyfikowano pomyślnie</target>
             </trans-unit>
             <trans-unit id="message.deleted_successfully">
                 <source>message.deleted_successfully</source>
-                <target>Deleted successfully</target>
+                <target>Usunięto pomyślnie</target>
             </trans-unit>
             <trans-unit id="message.category_contains_movies">
                 <source>message.category_contains_movies</source>
-                <target>Category contains movies</target>
+                <target>Kategoria jest powiązana z filmem</target>
             </trans-unit>
             <trans-unit id="message.access_denied">
                 <source>message.access_denied</source>
-                <target>Access denied!</target>
+                <target>Brak dostępu!</target>
             </trans-unit>
             <trans-unit id="title.movie_list">
                 <source>title.movie_list</source>
-                <target>Movies list</target>
+                <target>Lista filmów</target>
             </trans-unit>
             <trans-unit id="title.category_list">
                 <source>title.category_list</source>
-                <target>Category list</target>
+                <target>Lista kategorii</target>
             </trans-unit>
             <trans-unit id="title.movie_details">
                 <source>title.movie_details</source>
-                <target>Details of movie #%id%</target>
+                <target>Szczegóły filmu #%id%</target>
             </trans-unit>
             <trans-unit id="title.comment_details">
                 <source>title.comment_details</source>
-                <target>Details of comment #%id%</target>
+                <target>Szczegóły komentarza #%id%</target>
             </trans-unit>
             <trans-unit id="title.category_create">
                 <source>title.category_create</source>
-                <target>Create category</target>
+                <target>Utwórz kategorię</target>
             </trans-unit>
             <trans-unit id="title.movie_create">
                 <source>title.movie_create</source>
-                <target>Create movie</target>
+                <target>Utwórz film</target>
             </trans-unit>
             <trans-unit id="title.movie_delete">
                 <source>title.movie_delete</source>
-                <target>Delete movie #%id%</target>
+                <target>Usuń film #%id%</target>
             </trans-unit>
             <trans-unit id="title.category_edit">
                 <source>title.category_edit</source>
-                <target>Edit category #%id%</target>
+                <target>Edytuj kategorię #%id%</target>
             </trans-unit>
             <trans-unit id="title.movie_edit">
                 <source>title.movie_edit</source>
-                <target>Edit movie #%id%</target>
+                <target>Edytuj film #%id%</target>
             </trans-unit>
             <trans-unit id="title.category_delete">
                 <source>title.category_delete</source>
-                <target>Delete category #%id%</target>
+                <target>Usuń kategorię #%id%</target>
             </trans-unit>
             <trans-unit id="title.comment_delete">
                 <source>title.comment_delete</source>
-                <target>Delete comment #%id%</target>
+                <target>Usuń komentarz #%id%</target>
             </trans-unit>
             <trans-unit id="title.comment_add">
                 <source>title.comment_add</source>
-                <target>Add comment</target>
+                <target>Dodaj komentarz</target>
             </trans-unit>
             <trans-unit id="title.profile_settings">
                 <source>title.profile_settings</source>
-                <target>Profile settings</target>
+                <target>Ustawienia konta</target>
             </trans-unit>
             <trans-unit id="title.change_password">
                 <source>title.change_password</source>
-                <target>Change password</target>
+                <target>Zmień hasło</target>
             </trans-unit>
             <trans-unit id="title.edit_profile_details">
                 <source>title.edit_profile_details</source>
-                <target>Edit profile details</target>
+                <target>Edytuj dane</target>
             </trans-unit>
             <trans-unit id="title.comment_list">
                 <source>title.comment_list</source>
-                <target>Comments list</target>
+                <target>Lista komentarzy</target>
             </trans-unit>
             <trans-unit id="action.view">
                 <source>action.view</source>
-                <target>view details</target>
+                <target>Zobacz szczegóły</target>
             </trans-unit>
             <trans-unit id="action.create">
                 <source>action.create</source>
-                <target>Create new</target>
+                <target>Utwórz</target>
             </trans-unit>
             <trans-unit id="action.edit">
                 <source>action.edit</source>
-                <target>Edit</target>
+                <target>Edytuj</target>
             </trans-unit>
             <trans-unit id="action.delete">
                 <source>action.delete</source>
-                <target>Delete</target>
+                <target>Usuń</target>
             </trans-unit>
             <trans-unit id="action.save">
                 <source>action.save</source>
-                <target>Save</target>
+                <target>Zapisz</target>
             </trans-unit>
             <trans-unit id="action.see_categories">
                 <source>action.see_categories</source>
-                <target>See categories</target>
+                <target>Pokaż kategorie</target>
             </trans-unit>
             <trans-unit id="action.back_to_list">
                 <source>action.back_to_list</source>
-                <target>Back to list</target>
+                <target>Powrót do listy</target>
             </trans-unit>
             <trans-unit id="action.back_to_movie_details">
                 <source>action.back_to_movie_details</source>
-                <target>Back to movie details</target>
+                <target>Powrót do podglądu filmu</target>
             </trans-unit>
             <trans-unit id="action.back_to_profile_settings">
                 <source>action.back_to_profile_settings</source>
-                <target>Back to profile settings</target>
+                <target>Powrót do opcji ustawień konta</target>
             </trans-unit>
             <trans-unit id="action.add_comment">
                 <source>action.add_comment</source>
-                <target>Add comment</target>
+                <target>Dodaj komentarz</target>
             </trans-unit>
             <trans-unit id="action.change_password">
                 <source>action.change_password</source>
-                <target>Change password</target>
+                <target>Zmień hasło</target>
             </trans-unit>
             <trans-unit id="action.edit_profile_details">
                 <source>action.edit_profile_details</source>
-                <target>Edit profile details</target>
+                <target>Edytuj dane</target>
             </trans-unit>
         </body>
     </file>
