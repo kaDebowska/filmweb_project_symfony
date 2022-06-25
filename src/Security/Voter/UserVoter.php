@@ -99,8 +99,9 @@ class UserVoter extends Voter
     /**
      * Check if user can edit user.
      *
-     * @param User $user User entity
+     * @param User          $user    User entity
      * @param UserInterface $manager
+     *
      * @return bool Result
      */
     private function canEdit(User $user, UserInterface $manager): bool
@@ -111,8 +112,9 @@ class UserVoter extends Voter
     /**
      * Check if user can view user.
      *
-     * @param User $user User entity
+     * @param User          $user    User entity
      * @param UserInterface $manager
+     *
      * @return bool Result
      */
     private function canView(User $user, UserInterface $manager): bool
@@ -123,8 +125,9 @@ class UserVoter extends Voter
     /**
      * Check if user can delete user.
      *
-     * @param User $user User entity
+     * @param User          $user    User entity
      * @param UserInterface $manager
+     *
      * @return bool Result
      */
     private function canDelete(User $user, UserInterface $manager): bool
