@@ -98,6 +98,14 @@
                 <source>label.settings</source>
                 <target>Settings</target>
             </trans-unit>
+            <trans-unit id="label.email">
+                <source>label.email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="label.password">
+                <source>label.password</source>
+                <target>Password</target>
+            </trans-unit>
             <trans-unit id="message.empty_list">
                 <source>message.empty_list</source>
                 <target>List is empty.</target>
@@ -125,6 +133,10 @@
             <trans-unit id="message.access_denied">
                 <source>message.access_denied</source>
                 <target>Access denied!</target>
+            </trans-unit>
+            <trans-unit id="message.logged_in">
+                <source>message.logged_in</source>
+                <target>You are logged in as</target>
             </trans-unit>
             <trans-unit id="title.movie_list">
                 <source>title.movie_list</source>
@@ -190,6 +202,10 @@
                 <source>title.comment_list</source>
                 <target>Comments list</target>
             </trans-unit>
+            <trans-unit id="title.login">
+                <source>title.login</source>
+                <target>Log in</target>
+            </trans-unit>
             <trans-unit id="action.view">
                 <source>action.view</source>
                 <target>view details</target>
@@ -237,6 +253,10 @@
             <trans-unit id="action.edit_profile_details">
                 <source>action.edit_profile_details</source>
                 <target>Edit profile details</target>
+            </trans-unit>
+            <trans-unit id="action.logout">
+                <source>action.logout</source>
+                <target>Logout</target>
             </trans-unit>
         </body>
     </file>
