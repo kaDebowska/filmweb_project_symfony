@@ -84,6 +84,7 @@ class CommentController extends AbstractController
 
             return $this->redirectToRoute('app_login');
         }
+        $movie = $comment->getMovie();
         $form = $this->createForm(FormType::class, $comment, [
             'method' => 'DELETE',
             'action' => $this->generateUrl('comment_delete', ['id' => $comment->getId()]),
@@ -98,7 +99,7 @@ class CommentController extends AbstractController
                 $this->translator->trans('message.deleted_successfully')
             );
 
-            return $this->redirectToRoute('movie_index');
+            return $this->redirectToRoute('movie_show', ['id' => $movie->getId()]);
         }
 
         return $this->render('comment/delete.html.twig', [
