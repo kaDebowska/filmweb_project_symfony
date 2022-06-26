@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Security Controller
+ */
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
