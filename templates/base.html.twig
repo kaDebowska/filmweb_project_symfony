@@ -43,8 +43,8 @@
                 <a class="nav-link dropdown-toggle fs-4" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             {{ 'label.profile' | trans }}</a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="user-dropdown">
-                <li><a class="dropdown-item" href="{{ path('app_logout') }}">{{ 'label.log_out' | trans }}</a></li>
                 <li><a class="dropdown-item" href="{{ url('user_settings')}}">{{ 'label.settings' | trans }}</a></li>
+                <li><a class="dropdown-item" href="{{ path('app_logout') }}">{{ 'label.log_out' | trans }}</a></li>
             </ul>
             </div>
             {% else %}

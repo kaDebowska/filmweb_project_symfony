@@ -8,6 +8,9 @@
 /public/bundles/
 /var/
 /vendor/
+.phpdoc
+bin/phpDocumentor.phar
+docs
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###

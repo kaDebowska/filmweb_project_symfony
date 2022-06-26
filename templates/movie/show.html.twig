@@ -5,9 +5,11 @@
 {% endblock %}
 
 {% block body %}
-    <h1>{{ movie.title }}</h1>
+    <h1>{{ 'title.movie_details'|trans({'%id%': movie.id|default('')}) }}</h1>
     {% if movie is defined and movie|length %}
         <dl class="dl-horizontal">
+            <dt>{{ 'label.title'|trans }}</dt>
+            <dd>{{ movie.title }}</dd>
             <dt>{{ 'label.year'|trans }}</dt>
             <dd>{{ movie.year }}</dd>
             <dt>{{ 'label.duration'|trans }}</dt>
