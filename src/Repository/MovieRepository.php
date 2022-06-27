@@ -133,8 +133,8 @@ class MovieRepository extends ServiceEntityRepository
     private function applyFiltersToList(QueryBuilder $queryBuilder, array $filters = []): QueryBuilder
     {
         if (isset($filters['category']) && $filters['category'] instanceof Category) {
-            $queryBuilder->andWhere('category IN (:Category)')
-                ->setParameter('Category', $filters['category']);
+            $queryBuilder->andWhere('category = :category')
+                ->setParameter('category', $filters['category']);
         }
 
         return $queryBuilder;
