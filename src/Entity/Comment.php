@@ -163,9 +163,8 @@ class Comment
 
     /**
      * Setter for movie.
-     * @param Movie|null $movie
      *
-     * @return void
+     * @param Movie|null $movie
      */
     public function setMovie(?Movie $movie): void
     {
@@ -175,7 +174,7 @@ class Comment
 
     /**
      * Getter for author nick.
-     * @return string|null
+     * @return string|null authorNick
      */
     public function getAuthorNick(): ?string
     {
@@ -185,9 +184,8 @@ class Comment
 
     /**
      * Setter for author nick.
-     * @param string|null $authorNick
      *
-     * @return void
+     * @param string|null $authorNick
      */
     public function setAuthorNick(?string $authorNick): void
     {

@@ -70,7 +70,7 @@ class CategoriesDataTransformer implements DataTransformerInterface
         foreach ($categoryTitles as $categoryTitle) {
             if ('' !== trim($categoryTitle)) {
                 $category = $this->categoryService->findOneByTitle(strtolower($categoryTitle));
-                if (null == $category) {
+                if (null === $category) {
                     $category = new Category();
                     $category->setTitle($categoryTitle);
 

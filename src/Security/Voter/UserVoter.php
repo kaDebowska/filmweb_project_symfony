@@ -100,7 +100,7 @@ class UserVoter extends Voter
      * Check if user can edit user.
      *
      * @param User          $user    User entity
-     * @param UserInterface $manager
+     * @param UserInterface $manager manager
      *
      * @return bool Result
      */
@@ -113,7 +113,7 @@ class UserVoter extends Voter
      * Check if user can view user.
      *
      * @param User          $user    User entity
-     * @param UserInterface $manager
+     * @param UserInterface $manager manger
      *
      * @return bool Result
      */
@@ -126,7 +126,7 @@ class UserVoter extends Voter
      * Check if user can delete user.
      *
      * @param User          $user    User entity
-     * @param UserInterface $manager
+     * @param UserInterface $manager manager
      *
      * @return bool Result
      */

@@ -14,7 +14,7 @@ class AppFixtures extends Fixture
 {
     /**
      * Load data fixtures with the passed EntityManager
-     * @param ObjectManager $manager
+     * @param ObjectManager $manager Object manager
      */
     public function load(ObjectManager $manager): void
     {
