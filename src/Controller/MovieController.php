@@ -33,6 +33,9 @@ class MovieController extends AbstractController
      */
     private TranslatorInterface $translator;
 
+    /**
+     * Comment service
+     */
     private CommentServiceInterface $commentService;
 
     /**
@@ -203,8 +206,11 @@ class MovieController extends AbstractController
             'action' => $this->generateUrl('movie_delete', ['id' => $movie->getId()]),
         ]);
         $form->handleRequest($request);
-
+        $comments = $this->commentService->findByMovie($movie);
         if ($form->isSubmitted() && $form->isValid()) {
+            foreach ($comments as $comment) {
+                $this->commentService->delete($comment);
+            }
             $this->movieService->delete($movie);
 
             $this->addFlash(

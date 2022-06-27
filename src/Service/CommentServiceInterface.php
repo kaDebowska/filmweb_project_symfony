@@ -37,4 +37,12 @@ interface CommentServiceInterface
      * @param Comment $comment Comment entity
      */
     public function delete(Comment $comment): void;
+
+    /**
+     * Find by Movie
+     *
+     * @param Movie $movie Movie entity
+     * @return array|null array of comments
+     */
+    public function findByMovie(Movie $movie): ?array;
 }

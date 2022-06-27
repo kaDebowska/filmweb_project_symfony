@@ -74,4 +74,16 @@ class CommentService implements CommentServiceInterface
             CommentRepository::PAGINATOR_ITEMS_PER_PAGE
         );
     }
+
+    /**
+     * Find by Movie
+     *
+     * @param Movie $movie Movie entity
+     * @return array|null array of comments
+     */
+    public function findByMovie(Movie $movie): ?array
+    {
+        $movieId = $movie->getId();
+        return $this->commentRepository->findBy(['movie' => $movieId]);
+    }
 }

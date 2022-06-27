@@ -74,10 +74,10 @@ class Comment
      *
      * @var Movie
      */
-    #[ORM\ManyToOne(targetEntity: Movie::class, cascade: ['remove'], fetch: 'EXTRA_LAZY')]
+    #[ORM\ManyToOne(targetEntity: Movie::class, fetch: 'EXTRA_LAZY')]
     #[Assert\Type(Movie::class)]
     #[Assert\NotBlank]
-    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[ORM\JoinColumn(nullable: false)]
     private Movie $movie;
 
     /**
